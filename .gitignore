@@ -3,3 +3,4 @@
 .wget*
 .cache
 .volta
+*.zwc
