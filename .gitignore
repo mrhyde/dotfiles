@@ -2,3 +2,4 @@
 .sudo*
 .wget*
 .cache
+.volta
