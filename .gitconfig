@@ -1,3 +1,8 @@
 [user]
 	name = Jason Hyde
 	email = github@2bad.me
+	signingkey = CC6148AB62E23917
+[commit]
+	gpgsign = true
+[gpg]
+	program = /usr/bin/gpg
