@@ -1,8 +1,10 @@
-*history
-.sudo*
-.wget*
 .cache
-.volta
-*.zwc
-.vscode*
+.config/configstore/*npm*
 .npm
+.quokka
+.sudo*
+.volta
+.vscode*
+.wget*
+*.zwc
+*history
