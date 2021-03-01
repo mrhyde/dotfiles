@@ -30,6 +30,7 @@ function install_packages() {
     # python3-pip
     software-properties-common
     tree
+    tzdata
     unrar
     unzip
     wget
