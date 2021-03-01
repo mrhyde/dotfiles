@@ -5,3 +5,4 @@
 .volta
 *.zwc
 .vscode*
+.npm
