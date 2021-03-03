@@ -47,6 +47,8 @@ z4h init || return
 
 # Export environment variables.
 export GPG_TTY=$TTY
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
 
 # Extend PATH.
 path=(~/bin $path)
@@ -97,5 +99,3 @@ alias clear_history='echo "" > ~/.zsh_history & exec $SHELL -l'
 # Set shell options: http://zsh.sourceforge.net/Doc/Release/Options.html.
 setopt glob_dots     # no special treatment for file names with a leading dot
 setopt no_auto_menu  # require an extra TAB press to open the completion menu
-export VOLTA_HOME="$HOME/.volta"
-export PATH="$VOLTA_HOME/bin:$PATH"
