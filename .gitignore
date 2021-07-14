@@ -3,6 +3,7 @@
 .gnupg
 .npm
 .quokka
+.ssh
 .sudo*
 .volta
 .vscode*
