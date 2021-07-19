@@ -1,3 +1,4 @@
+.aws
 .cache
 .config/configstore/*npm*
 .gnupg
@@ -5,6 +6,7 @@
 .quokka
 .ssh
 .sudo*
+.terraform.d
 .volta
 .vscode*
 .wget*
