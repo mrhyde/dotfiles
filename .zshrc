@@ -96,6 +96,7 @@ alias ls="${aliases[ls]:-ls} -A"
 
 alias clear_history='echo "" > ~/.zsh_history & exec $SHELL -l'
 alias explorer="explorer.exe ."
+alias aws='docker run --rm -it -v ~/.aws:/root/.aws -v $(pwd):/aws amazon/aws-cli'
 
 # Set shell options: http://zsh.sourceforge.net/Doc/Release/Options.html.
 setopt glob_dots     # no special treatment for file names with a leading dot
