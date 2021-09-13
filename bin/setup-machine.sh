@@ -60,6 +60,10 @@ function install_docker() {
       stable"
     sudo apt-get update -y
     sudo apt-get install -y docker-ce
+    # Ref. https://github.com/microsoft/WSL/discussions/4872
+    sudo touch /etc/fstab
+    sudo update-alternatives --set iptables /usr/sbin/iptables-legacy
+    sudo update-alternatives --set ip6tables /usr/sbin/ip6tables-legacy
   else
     sudo apt-get install -y docker.io
   fi
