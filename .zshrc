@@ -77,8 +77,10 @@ z4h bindkey z4h-cd-down    Alt+Down   # cd into a child directory
 
 # Autoload functions.
 autoload -Uz zmv
+autoload -U +X bashcompinit && bashcompinit
 
 # Define functions and completions.
+complete -o nospace -C /usr/local/bin/terraform terraform
 function md() { [[ $# == 1 ]] && mkdir -p -- "$1" && cd -- "$1" }
 compdef _directories md
 
