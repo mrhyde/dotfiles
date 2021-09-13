@@ -2,6 +2,7 @@
 .cache
 .config/configstore/*npm*
 .gnupg
+.local/share/vscode-beggar
 .npm
 .quokka
 .ssh
