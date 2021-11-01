@@ -1,6 +1,6 @@
 .aws
 .cache
-.config/configstore/*npm*
+.config/configstore/update-notifier*
 .gnupg
 .local/share/vscode-beggar
 .npm
@@ -10,6 +10,7 @@
 .terraform.d
 .volta
 .vscode*
+.wallaby
 .wget*
 *.zwc
 *history
