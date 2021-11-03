@@ -93,7 +93,8 @@ function ssh() { z4h ssh "$@" }
 # Define aliases.
 alias tree='tree -a -I .git'
 alias clear_history='echo "" > ~/.zsh_history & exec $SHELL -l'
-alias explorer="explorer.exe ."
+alias code='code-insiders'
+alias explorer='explorer.exe .'
 alias aws='docker run --rm -it -v ~/.aws:/root/.aws -v $(pwd):/aws -e AWS_PROFILE amazon/aws-cli'
 
 # Add flags to existing aliases.
