@@ -484,7 +484,7 @@
  /* 0850a: disable location bar suggestion types
   * [SETTING] Privacy & Security>Address Bar>When using the address bar, suggest ***/
     // user_pref("browser.urlbar.suggest.history", false);
-    // user_pref("browser.urlbar.suggest.bookmark", false);
+ user_pref("browser.urlbar.suggest.bookmark", false);
     // user_pref("browser.urlbar.suggest.openpage", false);
  user_pref("browser.urlbar.suggest.topsites", false); // [FF78+]
  /* 0850b: disable tab-to-search [FF85+]
@@ -1715,13 +1715,14 @@
  // ***/
  
  user_pref('browser.toolbars.bookmarks.visibility', false);
- user_pref("browser.uiCustomization.state", "{\"placements\":{\"widget-overflow-fixed-list\":[\"firefox_ghostery_com-browser-action\",\"ublock0_raymondhill_net-browser-action\",\"wappalyzer_crunchlabz_com-browser-action\"],\"nav-bar\":[\"back-button\",\"forward-button\",\"stop-reload-button\",\"home-button\",\"urlbar-container\",\"downloads-button\",\"sidebar-button\",\"developer-button\",\"_143f479b-4cb2-4d8c-8c31-ae8653bc6054_-browser-action\"],\"toolbar-menubar\":[\"menubar-items\"],\"TabsToolbar\":[\"tabbrowser-tabs\",\"new-tab-button\",\"alltabs-button\"],\"PersonalToolbar\":[\"import-button\",\"personal-bookmarks\"]},\"seen\":[\"developer-button\",\"profiler-button\",\"firefox_ghostery_com-browser-action\",\"ublock0_raymondhill_net-browser-action\",\"wappalyzer_crunchlabz_com-browser-action\",\"_143f479b-4cb2-4d8c-8c31-ae8653bc6054_-browser-action\"],\"dirtyAreaCache\":[\"nav-bar\",\"PersonalToolbar\",\"toolbar-menubar\",\"TabsToolbar\",\"widget-overflow-fixed-list\"],\"currentVersion\":17,\"newElementCount\":6}");
+ user_pref('browser.uiCustomization.state', "{\"placements\":{\"widget-overflow-fixed-list\":[\"firefox_ghostery_com-browser-action\",\"ublock0_raymondhill_net-browser-action\",\"wappalyzer_crunchlabz_com-browser-action\"],\"nav-bar\":[\"back-button\",\"forward-button\",\"stop-reload-button\",\"home-button\",\"urlbar-container\",\"downloads-button\",\"sidebar-button\",\"developer-button\",\"_143f479b-4cb2-4d8c-8c31-ae8653bc6054_-browser-action\"],\"toolbar-menubar\":[\"menubar-items\"],\"TabsToolbar\":[\"tabbrowser-tabs\",\"new-tab-button\",\"alltabs-button\"],\"PersonalToolbar\":[\"import-button\",\"personal-bookmarks\"]},\"seen\":[\"developer-button\",\"profiler-button\",\"firefox_ghostery_com-browser-action\",\"ublock0_raymondhill_net-browser-action\",\"wappalyzer_crunchlabz_com-browser-action\",\"_143f479b-4cb2-4d8c-8c31-ae8653bc6054_-browser-action\"],\"dirtyAreaCache\":[\"nav-bar\",\"PersonalToolbar\",\"toolbar-menubar\",\"TabsToolbar\",\"widget-overflow-fixed-list\"],\"currentVersion\":17,\"newElementCount\":6}");
  user_pref('browser.urlbar.sponsoredTopSites', false);
  user_pref('dom.forms.autocomplete.formautofill', false);
  user_pref('extensions.ui.dictionary.hidden', true);
  user_pref('extensions.ui.locale.hidden', true);
  user_pref('findbar.highlightAll', true);
  user_pref('media.videocontrols.picture-in-picture.enabled', false);
+ user_pref('media.videocontrols.picture-in-picture.video-toggle.enabled',false);
 
 
  /* END: internal custom pref to test for syntax errors ***/
