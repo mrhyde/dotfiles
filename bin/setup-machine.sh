@@ -57,11 +57,11 @@ function install_docker() {
   if (( WSL )); then
     local release
     release="$(lsb_release -cs)"
-    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-    sudo apt-key fingerprint 0EBFCD88
-    sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu
-      $release
-      stable"
+    sudo mkdir -p /etc/apt/keyrings
+    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+    echo \
+      "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+      $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
     sudo apt-get update -y
     sudo apt-get install -y docker-ce
     # Ref. https://github.com/microsoft/WSL/discussions/4872
@@ -164,7 +164,7 @@ install_jc
 install_bat
 install_exa
 install_fonts
-# install_docker
+install_docker
 # install_vscode
 # install_gh
 
