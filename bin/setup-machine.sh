@@ -136,7 +136,8 @@ function install_gh() {
 }
 
 function fix_locale() {
-  sudo tee /etc/default/locale >/dev/null <<<'LC_ALL="C.UTF-8"'
+  sudo update-locale LC_ALL=C.UTF-8
+  # sudo dpkg-reconfigure locales
 }
 
 function win_install_fonts() {
