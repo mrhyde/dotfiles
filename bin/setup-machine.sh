@@ -15,6 +15,7 @@ function install_packages() {
   local packages=(
     apt-transport-https
     autoconf
+    bat
     ca-certificates
     curl
     dialog
@@ -23,11 +24,14 @@ function install_packages() {
     git
     gzip
     htop
+    jc
     jq
+    locales
     moreutils
     nano
     python3
     # python3-pip
+    ripgrep
     software-properties-common
     tree
     tzdata
@@ -93,36 +97,6 @@ function install_exa() {
   sudo install -DT ./exa-linux-x86_64 /usr/local/bin/exa
   popd
   rm -rf -- "$tmp"
-}
-
-function install_ripgrep() {
-  local v="12.1.1"
-  ! command -v rg &>/dev/null || [[ "$(rg --version)" != *" $v "* ]] || return 0
-  local deb
-  deb="$(mktemp)"
-  curl -fsSL "https://github.com/BurntSushi/ripgrep/releases/download/${v}/ripgrep_${v}_amd64.deb" >"$deb"
-  sudo dpkg -i "$deb"
-  rm "$deb"
-}
-
-function install_jc() {
-  local v="1.14.1"
-  ! command -v jc &>/dev/null || [[ "$(jc -a | jq -r .version)" != "$v" ]] || return 0
-  local deb
-  deb="$(mktemp)"
-  curl -fsSL "https://github.com/kellyjonbrazil/jc/releases/download/v${v}/jc-${v}-1.x86_64.deb" >"$deb"
-  sudo dpkg -i "$deb"
-  rm "$deb"
-}
-
-function install_bat() {
-  local v="0.17.1"
-  ! command -v bat &>/dev/null || [[ "$(bat --version)" != *" $v" ]] || return 0
-  local deb
-  deb="$(mktemp)"
-  curl -fsSL "https://github.com/sharkdp/bat/releases/download/v${v}/bat_${v}_amd64.deb" > "$deb"
-  sudo dpkg -i "$deb"
-  rm "$deb"
 }
 
 function install_gh() {
