@@ -1,9 +1,13 @@
 .aws
 .cache
 .config/configstore/update-notifier*
+.config/GitKraken
+.config/google-chrome
+.gitkraken
 .gnupg
 .local/share/vscode-beggar
 .npm
+.pki
 .quokka
 .ssh
 .sudo*
