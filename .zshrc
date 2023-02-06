@@ -61,7 +61,6 @@ z4h init || return
 # Export environment variables.
 export GPG_TTY=$TTY
 export VOLTA_HOME="$HOME/.volta"
-export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}'):0.0
 
 # Extend PATH.
 path=(~/bin $VOLTA_HOME/bin $path)
