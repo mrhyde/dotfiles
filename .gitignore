@@ -1,6 +1,7 @@
 .aws
 .cache
 .config/configstore/update-notifier*
+.config/Cypress
 .config/GitKraken
 .config/google-chrome
 .gitkraken
