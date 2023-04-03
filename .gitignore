@@ -1,9 +1,12 @@
 .aws
 .cache
+.config/configstore/nodemon*
 .config/configstore/update-notifier*
 .config/Cypress
 .config/GitKraken
 .config/google-chrome
+.docker
+.dotnet
 .gitkraken
 .gnupg
 .local/share/vscode-beggar
