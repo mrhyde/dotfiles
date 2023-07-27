@@ -110,7 +110,7 @@ function install_gh() {
 }
 
 function fix_locale() {
-  sudo update-locale LC_ALL=C.UTF-8
+  sudo localectl set-locale LANG=en_IN.UTF-8
   # sudo dpkg-reconfigure locales
 }
 
@@ -159,11 +159,8 @@ fix_locale
 
 install_packages
 install_volta
-install_ripgrep
-install_jc
-install_bat
 install_exa
-install_fonts
+# install_fonts
 install_docker
 # install_vscode
 # install_gh
