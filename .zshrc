@@ -31,19 +31,23 @@ zstyle ':z4h:direnv'         enable 'no'
 # Show "loading" and "unloading" notifications from direnv.
 zstyle ':z4h:direnv:success' notify 'yes'
 
-# Enable ('yes') or disable ('no') automatic teleportation of z4h over
-# SSH when connecting to these hosts.
-zstyle ':z4h:ssh:devhands'   enable 'yes'
-zstyle ':z4h:ssh:*.example-hostname2' enable 'no'
-# The default value if none of the overrides above match the hostname.
-zstyle ':z4h:ssh:*'                   enable 'no'
+# Enable SSH teleportation by default.
+zstyle ':z4h:ssh:*'          enable 'yes'
+
+# Disable SSH teleportation for specific hosts.
+# zstyle ':z4h:ssh:example-hostname1'   enable no
+# zstyle ':z4h:ssh:*.example-hostname2' enable no
 
 # Send these files over to the remote host when connecting over SSH to the
 # enabled hosts.
-zstyle ':z4h:ssh:*' send-extra-files '~/.nanorc' '~/.env.zsh'
+zstyle ':z4h:ssh:*' send-extra-files '~/.nanorc' '~/.env.zsh' '~/.p10k.zsh'
+
+zstyle ':z4h:term-title:ssh'    precmd                 ${${${Z4H_SSH##*:}//\%/%%}:-%m}': %~'
+zstyle ':z4h:term-title:ssh'    preexec                ${${${Z4H_SSH##*:}//\%/%%}:-%m}': ${1//\%/%%}'
 
 # Start ssh-agent if it's not running yet.
 zstyle ':z4h:ssh-agent:' start yes
+zstyle ':z4h:ssh-agent:' extra-args -t 20h
 
 # Clone additional Git repositories from GitHub.
 #
