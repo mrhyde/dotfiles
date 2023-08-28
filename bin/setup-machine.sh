@@ -102,6 +102,11 @@ function set_preferences() {
   fi
 }
 
+if [[ "$(id -u)" == 0 ]]; then
+  echo "$BASH_SOURCE: please run as non-root" >&2
+  exit 1
+fi
+
 umask g-w,o-w
 
 add_to_sudoers
