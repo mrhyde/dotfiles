@@ -97,6 +97,7 @@ function fix_locale() {
 # Set preferences for various applications.
 function set_preferences() {
   if (( WSL )); then
+    sudo systemctl disable motd-news.timer
     gsettings set org.gnome.desktop.interface monospace-font-name 'MesloLGS Nerd Font 12'
     xdg-settings set default-web-browser google-chrome.desktop
   fi
