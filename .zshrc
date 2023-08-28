@@ -101,7 +101,8 @@ compdef _directories md
 [[ -z $z4h_win_home ]] || hash -d w=$z4h_win_home
 
 # Define aliases.
-alias tree='tree -a -I .git'
+alias tree='tree -a -I .git --dirsfirst'
+alias exa='exa -ga --group-directories-first --time-style=long-iso --color-scale'
 alias clear_history='echo "" > ~/.zsh_history & exec $SHELL -l'
 alias code='code-insiders'
 alias explorer='explorer.exe .'
@@ -109,6 +110,7 @@ alias aws='docker run --rm -it -v ~/.aws:/root/.aws -v $(pwd):/aws -e AWS_PROFIL
 
 # Add flags to existing aliases.
 alias ls="${aliases[ls]:-ls} -A"
+alias nano='nano --mouse'
 
 # Set shell options: http://zsh.sourceforge.net/Doc/Release/Options.html.
 setopt glob_dots     # no special treatment for file names with a leading dot
