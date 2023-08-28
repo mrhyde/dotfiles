@@ -58,8 +58,6 @@ function install_volta() {
 
 function install_docker() {
   if (( WSL )); then
-    local release
-    release="$(lsb_release -cs)"
     sudo mkdir -p /etc/apt/keyrings
     curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
     echo \
@@ -75,72 +73,6 @@ function install_docker() {
     sudo apt-get install -y docker.io
   fi
   sudo usermod -aG docker "$USER"
-  # pip3 install --user docker-compose
-}
-
-# Install Visual Studio Code.
-function install_vscode() {
-  (( !WSL )) || return 0
-  ! command -v code &>/dev/null || return 0
-  local deb
-  deb="$(mktemp)"
-  curl -fsSL 'https://go.microsoft.com/fwlink/?LinkID=760868' >"$deb"
-  sudo dpkg -i "$deb"
-  rm -- "$deb"
-}
-
-function install_exa() {
-  local v="0.9.0"
-  ! command -v exa &>/dev/null || [[ "$(exa --version)" != *" v$v" ]] || return 0
-  local tmp
-  tmp="$(mktemp -d)"
-  pushd -- "$tmp"
-  curl -fsSLO "https://github.com/ogham/exa/releases/download/v${v}/exa-linux-x86_64-${v}.zip"
-  unzip exa-linux-x86_64-${v}.zip
-  sudo install -DT ./exa-linux-x86_64 /usr/local/bin/exa
-  popd
-  rm -rf -- "$tmp"
-}
-
-function install_gh() {
-  local v="1.6.1"
-  ! command -v gh &>/dev/null || [[ "$(gh --version)" != */v"$v" ]] || return 0
-  local deb
-  deb="$(mktemp)"
-  curl -fsSL "https://github.com/cli/cli/releases/download/v${v}/gh_${v}_linux_amd64.deb" > "$deb"
-  sudo dpkg -i "$deb"
-  rm "$deb"
-}
-
-function fix_locale() {
-  sudo localectl set-locale LANG=en_IN.UTF-8
-  # sudo dpkg-reconfigure locales
-}
-
-function win_install_fonts() {
-  local dst_dir
-  dst_dir="$(cmd.exe /c 'echo %LOCALAPPDATA%\Microsoft\Windows\Fonts' 2>/dev/null | sed 's/\r$//')"
-  dst_dir="$(wslpath "$dst_dir")"
-  mkdir -p "$dst_dir"
-  local src
-  for src in "$@"; do
-    local file="$(basename "$src")"
-    if [[ ! -f "$dst_dir/$file" ]]; then
-      cp -f "$src" "$dst_dir/"
-    fi
-    local win_path
-    win_path="$(wslpath -w "$dst_dir/$file")"
-    # Install font for the current user. It'll appear in "Font settings".
-    reg.exe add                                                 \
-      'HKCU\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Fonts' \
-      /v "${file%.*} (TrueType)" /t REG_SZ /d "$win_path" /f 2>/dev/null
-  done
-}
-
-# Install a decent monospace font.
-function install_fonts() {
-  (( WSL )) || return 0
-  win_install_fonts ~/.local/share/fonts/NerdFonts/*.ttf
 }
 
 function add_to_sudoers() {
@@ -162,10 +94,6 @@ fix_locale
 
 install_packages
 install_volta
-install_exa
-# install_fonts
 install_docker
-# install_vscode
-# install_gh
 
 echo SUCCESS
