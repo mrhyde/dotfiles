@@ -17,9 +17,11 @@ function install_packages() {
     autoconf
     bat
     ca-certificates
+    command-not-found
     curl
     dialog
     dos2unix
+    exa
     gawk
     git
     gzip
@@ -27,16 +29,17 @@ function install_packages() {
     jc
     jq
     locales
+    mesa-va-drivers
     moreutils
     nano
-    python3
-    # python3-pip
     ripgrep
     software-properties-common
     tree
     tzdata
+    ubuntu-release-upgrader-core
     unrar
     unzip
+    vainfo
     wget
     zip
     zsh
