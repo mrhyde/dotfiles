@@ -87,10 +87,26 @@ function add_to_sudoers() {
   sudo chmod 440 /etc/sudoers.d/"$USER"
 }
 
+function fix_locale() {
+  sudo locale-gen en_IN.UTF-8
+  sudo localectl set-locale LANG=en_IN.UTF-8
+  # or manually:
+  # sudo dpkg-reconfigure locales
+}
+
+# Set preferences for various applications.
+function set_preferences() {
+  if (( WSL )); then
+    gsettings set org.gnome.desktop.interface monospace-font-name 'MesloLGS Nerd Font 12'
+    xdg-settings set default-web-browser google-chrome.desktop
+  fi
+}
+
 umask g-w,o-w
 
 add_to_sudoers
 fix_locale
+set_preferences
 
 install_packages
 install_volta
