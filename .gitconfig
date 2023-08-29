@@ -6,7 +6,10 @@
 	gpgSign = true
 [gpg]
 	program = /usr/bin/gpg
+	format = openpgp
 [pull]
 	ff = only
 [tag]
 	forceSignAnnotated = false
+[init]
+	defaultBranch = master
