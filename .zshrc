@@ -49,6 +49,10 @@ zstyle ':z4h:term-title:ssh'    preexec                ${${${Z4H_SSH##*:}//\%/%%
 zstyle ':z4h:ssh-agent:' start yes
 zstyle ':z4h:ssh-agent:' extra-args -t 20h
 
+zstyle ':completion:*:ssh:argument-1:'       tag-order          hosts users
+zstyle ':completion:*:scp:argument-rest:'    tag-order          hosts files users
+zstyle ':completion:*:(ssh|scp|rdp):*:hosts' hosts
+
 # Clone additional Git repositories from GitHub.
 #
 # This doesn't do anything apart from cloning the repository and keeping it
