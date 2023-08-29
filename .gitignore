@@ -8,6 +8,7 @@
 .docker
 .dotnet
 .gitkraken
+.gk
 .gnupg
 .local/share/vscode-beggar
 .npm
