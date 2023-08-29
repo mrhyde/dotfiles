@@ -18,6 +18,7 @@ zstyle ':z4h:' start-tmux       'no'
 
 # Mark up shell's output with semantic information.
 zstyle ':z4h:' term-shell-integration 'yes'
+zstyle ':z4h:' propagate-cwd    'yes'
 
 # Right-arrow key accepts one character ('partial-accept') from
 # command autosuggestions or the whole thing ('accept')?
@@ -69,6 +70,7 @@ z4h init || return
 # Export environment variables.
 export GPG_TTY=$TTY
 export VOLTA_HOME="$HOME/.volta"
+export LIBVA_DRIVER_NAME=d3d12
 
 # Extend PATH.
 path=(~/bin $VOLTA_HOME/bin $path)
