@@ -94,6 +94,16 @@ function fix_locale() {
   # sudo dpkg-reconfigure locales
 }
 
+function fix_wsl_interop() {
+  if (( WSL )); then
+    # Ref. https://github.com/microsoft/WSL/issues/8952
+    sudo sh -c 'echo :WSLInterop:M::MZ::/init:PF > /usr/lib/binfmt.d/WSLInterop.conf'
+    sudo systemctl unmask systemd-binfmt.service
+    sudo systemctl restart systemd-binfmt
+    sudo systemctl mask systemd-binfmt.service
+  fi
+}
+
 # Set preferences for various applications.
 function set_preferences() {
   if (( WSL )); then
@@ -112,6 +122,7 @@ umask g-w,o-w
 
 add_to_sudoers
 fix_locale
+fix_wsl_interop
 set_preferences
 
 install_packages
