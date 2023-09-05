@@ -104,6 +104,18 @@ function fix_wsl_interop() {
   fi
 }
 
+function fix_time_sync() {
+  if (( WSL )); then
+    # Ref. https://github.com/microsoft/WSL/issues/8204#issuecomment-1338334154
+    sudo mkdir -p /etc/systemd/system/systemd-timesyncd.service.d
+    sudo tee /etc/systemd/system/systemd-timesyncd.service.d/override.conf > /dev/null <<'EOF'
+[Unit]
+ConditionVirtualization=
+EOF
+    sudo systemctl start systemd-timesyncd
+  fi
+}
+
 # Set preferences for various applications.
 function set_preferences() {
   if (( WSL )); then
@@ -123,6 +135,7 @@ umask g-w,o-w
 add_to_sudoers
 fix_locale
 fix_wsl_interop
+fix_time_sync
 set_preferences
 
 install_packages
