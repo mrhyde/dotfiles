@@ -1,6 +1,3 @@
 {
-  "delay": 500,
-  "pro": true,
-  "nativeEsm": true,
-  "env": { "params": { "runner": "--experimental-specifier-resolution=node" } }
+  "pro": true
 }
