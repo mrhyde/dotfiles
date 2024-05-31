@@ -13,3 +13,6 @@
 	forceSignAnnotated = false
 [init]
 	defaultBranch = master
+[gpg "ssh"]
+	program = ssh-keygen
+	allowedSignersFile = ""
