@@ -70,10 +70,11 @@ z4h init || return
 # Export environment variables.
 export GPG_TTY=$TTY
 export VOLTA_HOME="$HOME/.volta"
+export DENO_INSTALL="/home/jason/.deno"
 export LIBVA_DRIVER_NAME=d3d12
 
 # Extend PATH.
-path=(~/bin $VOLTA_HOME/bin $path)
+path=(~/bin $VOLTA_HOME/bin $DENO_INSTALL/bin $path)
 
 # Source additional local files if they exist.
 z4h source ~/.env.zsh
