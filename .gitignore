@@ -1,10 +1,12 @@
 .aws
+.bun
 .cache
 .config/configstore/nodemon*
 .config/configstore/update-notifier*
 .config/Cypress
 .config/GitKraken
 .config/google-chrome
+.deno
 .docker
 .dotnet
 .gitkraken
