@@ -1,9 +1,11 @@
 .aws
 .bun
 .cache
+.config/astro
 .config/configstore/nodemon*
 .config/configstore/update-notifier*
 .config/Cypress
+.config/dconf/user
 .config/GitKraken
 .config/google-chrome
 .deno
@@ -12,6 +14,9 @@
 .gitkraken
 .gk
 .gnupg
+.lesshst
+.local/share/applications/mimeapps.list
+.local/share/recently-used.xbel
 .local/share/vscode-beggar
 .npm
 .pki
