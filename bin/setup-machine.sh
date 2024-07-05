@@ -88,6 +88,7 @@ function add_to_sudoers() {
 }
 
 function fix_locale() {
+  sudo apt install -y locales
   sudo locale-gen en_IN.UTF-8
   sudo localectl set-locale LANG=en_IN.UTF-8
   # or manually:
