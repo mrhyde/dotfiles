@@ -45,11 +45,11 @@ function install_packages() {
     zsh
   )
 
-  sudo apt-get update
-  sudo bash -c 'DEBIAN_FRONTEND=noninteractive apt-get -o DPkg::options::=--force-confdef -o DPkg::options::=--force-confold upgrade -y'
-  sudo apt-get install -y "${packages[@]}"
-  sudo apt-get autoremove -y
-  sudo apt-get autoclean
+  sudo apt update
+  sudo bash -c 'DEBIAN_FRONTEND=noninteractive apt -o DPkg::options::=--force-confdef -o DPkg::options::=--force-confold upgrade -y'
+  sudo apt install -y "${packages[@]}"
+  sudo apt autoremove -y
+  sudo apt autoclean
 }
 
 function install_volta() {
@@ -63,14 +63,14 @@ function install_docker() {
     echo \
       "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
       $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-    sudo apt-get update -y
-    sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+    sudo apt update -y
+    sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
     # Ref. https://github.com/microsoft/WSL/discussions/4872
     sudo touch /etc/fstab
     sudo update-alternatives --set iptables /usr/sbin/iptables-legacy
     sudo update-alternatives --set ip6tables /usr/sbin/ip6tables-legacy
   else
-    sudo apt-get install -y docker.io
+    sudo apt install -y docker.io
   fi
   sudo usermod -aG docker "$USER"
 }
