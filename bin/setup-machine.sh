@@ -21,7 +21,7 @@ function install_packages() {
     curl
     dialog
     dos2unix
-    exa
+    eza
     gawk
     git
     gzip
