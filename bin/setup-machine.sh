@@ -95,6 +95,14 @@ function fix_locale() {
   # sudo dpkg-reconfigure locales
 }
 
+function fix_systemd() {
+  if (( WSL )); then
+    sudo apt install -y systemd
+    # Ref. https://github.com/microsoft/WSL/issues/9602#issuecomment-1421897547
+    sudo ln -s /usr/lib/systemd/systemd /sbin/init
+  fi
+}
+
 function fix_wsl_interop() {
   if (( WSL )); then
     # Ref. https://github.com/microsoft/WSL/issues/8952
@@ -135,6 +143,7 @@ umask g-w,o-w
 
 add_to_sudoers
 fix_locale
+fix_systemd
 fix_wsl_interop
 fix_time_sync
 set_preferences
