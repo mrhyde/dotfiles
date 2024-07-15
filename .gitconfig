@@ -16,3 +16,5 @@
 [gpg "ssh"]
 	program = ssh-keygen
 	allowedSignersFile = ""
+[rebase]
+	updateRefs = true
