@@ -1,0 +1,15 @@
+#!/bin/bash
+
+if [ $# -eq 0 ]; then
+    echo "Usage: codecat <file_extension1> [file_extension2] ..."
+    exit 1
+fi
+
+for ext in "$@"; do
+    find . -type f -name "*.$ext" -print0 | while IFS= read -r -d '' file; do 
+        echo -e "\n/* File: $file */"
+        cat "$file"
+        echo -e "\n/* End of file: $file */"
+        echo
+    done
+done
