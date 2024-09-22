@@ -2,12 +2,14 @@
 .bun
 .cache
 .config/astro
+.config/cody-ai
 .config/configstore/nodemon*
 .config/configstore/update-notifier*
 .config/Cypress
 .config/dconf/user
 .config/GitKraken
 .config/google-chrome
+.config/nats
 .deno
 .docker
 .dotnet
