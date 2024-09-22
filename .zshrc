@@ -109,14 +109,14 @@ compdef _directories md
 
 # Define aliases.
 alias tree='tree -a -I .git --dirsfirst'
-alias exa='exa -ga --group-directories-first --time-style=long-iso --color-scale'
 alias nano='nano --mouse'
 alias clear_history='echo "" > ~/.zsh_history & exec $SHELL -l'
 alias aws='sudo docker run --rm -it -v ~/.aws:/root/.aws -v $(pwd):/aws -e AWS_PROFILE amazon/aws-cli'
-alias dive="docker run -ti --rm  -v /var/run/docker.sock:/var/run/docker.sock wagoodman/dive"
+alias dive='docker run -ti --rm -v /var/run/docker.sock:/var/run/docker.sock wagoodman/dive'
 alias code='code-insiders'
 alias explorer='explorer.exe .'
 alias gitkraken='gitkraken --disable-gpu'
+alias cc='codecat'
 
 # Add flags to existing aliases.
 alias ls="${aliases[ls]:-ls} -A"
