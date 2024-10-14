@@ -24,16 +24,20 @@ function install_packages() {
     eza
     gawk
     git
+    gnupg2
     gzip
     htop
     jc
     jq
+    libglib2.0-bin
     locales
     mesa-va-drivers
     moreutils
     nano
     ripgrep
     software-properties-common
+    sudo
+    systemd
     tree
     tzdata
     ubuntu-release-upgrader-core
@@ -46,14 +50,14 @@ function install_packages() {
   )
 
   sudo apt update
-  sudo bash -c 'DEBIAN_FRONTEND=noninteractive apt -o DPkg::options::=--force-confdef -o DPkg::options::=--force-confold upgrade -y'
+  sudo DEBIAN_FRONTEND=noninteractive apt -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" upgrade -y
   sudo apt install -y "${packages[@]}"
   sudo apt autoremove -y
   sudo apt autoclean
 }
 
 function install_volta() {
-  curl https://get.volta.sh | bash
+  curl https://get.volta.sh | bash -s -- --skip-setup
 }
 
 function install_docker() {
@@ -72,7 +76,7 @@ function install_docker() {
     sudo update-alternatives --set iptables /usr/sbin/iptables-legacy
     sudo update-alternatives --set ip6tables /usr/sbin/ip6tables-legacy
   fi
-  sudo groupadd docker
+  sudo groupadd -f docker
   sudo usermod -aG docker "$USER"
 
   # start docker on boot with systemd
@@ -82,14 +86,24 @@ function install_docker() {
 
 function add_to_sudoers() {
   # This is to be able to create /etc/sudoers.d/"$username".
-  if [[ "$USER" == *'~' || "$USER" == *.* ]]; then
-    >&2 echo "$BASH_SOURCE: invalid username: $USER"
-    exit 1
+  if [[ "$USER" =~ ['~'\.] ]]; then
+    echo "$0: invalid username: $USER" >&2
+    return 1
   fi
 
   sudo usermod -aG sudo "$USER"
-  sudo tee /etc/sudoers.d/"$USER" <<<"$USER ALL=(ALL) NOPASSWD:ALL" >/dev/null
+  echo "$USER ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/"$USER" > /dev/null
   sudo chmod 440 /etc/sudoers.d/"$USER"
+}
+
+function fix_systemd() {
+  if (( WSL )); then
+    sudo apt install -y systemd
+    # Ref. https://github.com/microsoft/WSL/issues/9602#issuecomment-1421897547
+    if [[ ! -e /sbin/init ]]; then
+      sudo ln -s /usr/lib/systemd/systemd /sbin/init
+    fi
+  fi
 }
 
 function fix_locale() {
@@ -100,18 +114,10 @@ function fix_locale() {
   # sudo dpkg-reconfigure locales
 }
 
-function fix_systemd() {
-  if (( WSL )); then
-    sudo apt install -y systemd
-    # Ref. https://github.com/microsoft/WSL/issues/9602#issuecomment-1421897547
-    sudo ln -s /usr/lib/systemd/systemd /sbin/init
-  fi
-}
-
 function fix_wsl_interop() {
   if (( WSL )); then
     # Ref. https://github.com/microsoft/WSL/issues/8952
-    sudo sh -c 'echo :WSLInterop:M::MZ::/init:PF > /usr/lib/binfmt.d/WSLInterop.conf'
+    echo ':WSLInterop:M::MZ::/init:PF' | sudo tee /usr/lib/binfmt.d/WSLInterop.conf > /dev/null
     sudo systemctl unmask systemd-binfmt.service
     sudo systemctl restart systemd-binfmt
     sudo systemctl mask systemd-binfmt.service
@@ -122,10 +128,7 @@ function fix_time_sync() {
   if (( WSL )); then
     # Ref. https://github.com/microsoft/WSL/issues/8204#issuecomment-1338334154
     sudo mkdir -p /etc/systemd/system/systemd-timesyncd.service.d
-    sudo tee /etc/systemd/system/systemd-timesyncd.service.d/override.conf > /dev/null <<'EOF'
-[Unit]
-ConditionVirtualization=
-EOF
+    echo -e "[Unit]\nConditionVirtualization=" | sudo tee /etc/systemd/system/systemd-timesyncd.service.d/override.conf > /dev/null
     sudo systemctl start systemd-timesyncd
   fi
 }
@@ -134,27 +137,34 @@ EOF
 function set_preferences() {
   if (( WSL )); then
     sudo systemctl disable motd-news.timer
-    gsettings set org.gnome.desktop.interface monospace-font-name 'MesloLGS Nerd Font 12'
-    xdg-settings set default-web-browser google-chrome.desktop
+    if command -v gsettings &> /dev/null; then
+      gsettings set org.gnome.desktop.interface monospace-font-name 'MesloLGS Nerd Font 12'
+    fi
+    if command -v xdg-settings &> /dev/null; then
+      xdg-settings set default-web-browser google-chrome.desktop
+    fi
   fi
 }
 
-if [[ "$(id -u)" == 0 ]]; then
-  echo "$BASH_SOURCE: please run as non-root" >&2
-  exit 1
-fi
+main() {
+  if [[ $EUID -eq 0 ]]; then
+    echo "$0: please run as non-root" >&2
+    exit 1
+  fi
 
-umask g-w,o-w
+  umask 0022
 
-add_to_sudoers
-fix_locale
-fix_systemd
-fix_wsl_interop
-fix_time_sync
-set_preferences
+  install_packages
+  install_volta
+  install_docker
+  add_to_sudoers
+  fix_systemd
+  fix_locale
+  fix_wsl_interop
+  fix_time_sync
+  set_preferences
 
-install_packages
-install_volta
-install_docker
+  echo "SUCCESS"
+}
 
-echo SUCCESS
+main "$@"

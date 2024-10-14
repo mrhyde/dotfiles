@@ -32,12 +32,13 @@ zstyle ':z4h:direnv'         enable 'no'
 # Show "loading" and "unloading" notifications from direnv.
 zstyle ':z4h:direnv:success' notify 'yes'
 
-# Enable SSH teleportation by default.
-zstyle ':z4h:ssh:*'          enable 'yes'
+# Enable ('yes') or disable ('no') automatic teleportation of z4h over
+# SSH when connecting to these hosts.
+# zstyle ':z4h:ssh:example-hostname1'   enable 'yes'
+# zstyle ':z4h:ssh:*.example-hostname2' enable 'no'
 
-# Disable SSH teleportation for specific hosts.
-# zstyle ':z4h:ssh:example-hostname1'   enable no
-# zstyle ':z4h:ssh:*.example-hostname2' enable no
+# The default value if none of the overrides above match the hostname.
+zstyle ':z4h:ssh:*'                   enable 'yes'
 
 # Send these files over to the remote host when connecting over SSH to the
 # enabled hosts.
