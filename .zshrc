@@ -71,11 +71,11 @@ z4h init || return
 # Export environment variables.
 export GPG_TTY=$TTY
 export VOLTA_HOME="$HOME/.volta"
-export DENO_INSTALL="/home/jason/.deno"
+export DENO_INSTALL="$HOME/.deno"
 export LIBVA_DRIVER_NAME=d3d12
 
 # Extend PATH.
-path=(~/bin $VOLTA_HOME/bin $DENO_INSTALL/bin $path)
+path=(~/bin $HOME/.local/bin $VOLTA_HOME/bin $DENO_INSTALL/bin $path)
 
 # Source additional local files if they exist.
 z4h source ~/.env.zsh
@@ -113,7 +113,7 @@ alias tree='tree -a -I .git --dirsfirst'
 alias nano='nano --mouse'
 alias clear_history='echo "" > ~/.zsh_history & exec $SHELL -l'
 alias aws='sudo docker run --rm -it -v ~/.aws:/root/.aws -v $(pwd):/aws -e AWS_PROFILE amazon/aws-cli'
-alias dive='docker run -ti --rm -v /var/run/docker.sock:/var/run/docker.sock wagoodman/dive'
+alias dive='docker run --rm -it -v /var/run/docker.sock:/var/run/docker.sock wagoodman/dive'
 alias code='code-insiders'
 alias explorer='explorer.exe .'
 alias gitkraken='gitkraken --disable-gpu'
