@@ -1,8 +1,10 @@
 .aws
 .bun
 .cache
+.claude*
 .config/astro
 .config/cody-ai
+.config/Cody*
 .config/configstore/nodemon*
 .config/configstore/update-notifier*
 .config/Cypress
@@ -10,6 +12,7 @@
 .config/GitKraken
 .config/google-chrome
 .config/nats
+.config/uv
 .deno
 .docker
 .dotnet
@@ -17,6 +20,7 @@
 .gk
 .gnupg
 .lesshst
+.local/bin
 .local/share/applications/mimeapps.list
 .local/share/recently-used.xbel
 .local/share/vscode-beggar
