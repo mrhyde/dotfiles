@@ -19,9 +19,12 @@
 .gitkraken
 .gk
 .gnupg
+.languine
 .lesshst
 .local/bin
 .local/share/applications/mimeapps.list
+.local/share/nats
+.local/share/rainfrog
 .local/share/recently-used.xbel
 .local/share/vscode-beggar
 .npm

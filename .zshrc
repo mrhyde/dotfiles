@@ -118,6 +118,7 @@ alias code='code-insiders'
 alias explorer='explorer.exe .'
 alias gitkraken='gitkraken --disable-gpu'
 alias cc='codecat'
+alias gsync='find ./ -maxdepth 1 -mindepth 1 -type d -exec sh -c "cd \"{}\" && git pull" \;'
 
 # Add flags to existing aliases.
 alias ls="${aliases[ls]:-ls} -A"
