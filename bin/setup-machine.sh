@@ -22,6 +22,7 @@ function install_packages() {
     dialog
     dos2unix
     eza
+    fd-find
     gawk
     git
     gnupg2
