@@ -48,4 +48,19 @@
       nerd-fonts.meslo-lg
     ];
   };
+
+  programs = {
+    eza = {
+      enable = true;
+      enableZshIntegration = true;
+      icons = "auto";
+      git = true;
+    };
+    bat = {
+      enable = true;
+    };
+    fzf = {
+      enable = true;
+    };
+  };
 }
