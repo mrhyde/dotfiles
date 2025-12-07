@@ -11,14 +11,15 @@
 .config/configstore/update-notifier*
 .config/Cypress
 .config/dconf/user
+.config/git
 .config/GitKraken
 .config/google-chrome
 .config/nats
 .config/uv
-.config/git
 .deno
 .docker
 .dotnet
+.DS_Store
 .gitkraken
 .gk
 .gnupg
