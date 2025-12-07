@@ -11,7 +11,7 @@
         signingKey = "1DD86A347604AEF6";
       };
       gpg = {
-        program = "/etc/profiles/per-user/jason/bin/gpg";
+        program = "/etc/profiles/per-user/${primaryUser}/bin/gpg";
         format = "openpgp";
       };
       commit = {

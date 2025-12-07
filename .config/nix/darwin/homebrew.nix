@@ -43,5 +43,6 @@
       "docker"
       "colima"
     ];
+    taps = [];
   };
 }

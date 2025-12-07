@@ -11,6 +11,7 @@
 .config/configstore/update-notifier*
 .config/Cypress
 .config/dconf/user
+.config/ghostty
 .config/git
 .config/GitKraken
 .config/google-chrome
