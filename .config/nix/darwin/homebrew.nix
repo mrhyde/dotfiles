@@ -22,10 +22,12 @@
       # "betterdisplay"
 
       # dev
-      "visual-studio-code"
+      "visual-studio-code@insiders"
       "ghostty"
       "gitkraken"
       "ngrok"
+      "postman"
+      "tableplus"
       "zerotier-one"
 
       # communication

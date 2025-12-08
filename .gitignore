@@ -28,6 +28,7 @@
 .languine
 .lesshst
 .local/bin
+.local/share/amp
 .local/share/applications/mimeapps.list
 .local/share/nats
 .local/share/rainfrog
@@ -61,4 +62,5 @@ Library
 Movies
 Music
 Pictures
+projects
 Public
