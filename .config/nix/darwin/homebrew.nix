@@ -23,19 +23,20 @@
 
       # dev
       "visual-studio-code"
+      "ghostty"
       "gitkraken"
       "ngrok"
-      "ghostty"
+      "zerotier-one"
 
       # communication
+      "microsoft-teams"
       "slack"
       "loom"
       "zoom"
-      "microsoft-teams"
 
       # other
-      "notion"
       "google-chrome"
+      "notion"
       "iina"
       "daisydisk"
     ];

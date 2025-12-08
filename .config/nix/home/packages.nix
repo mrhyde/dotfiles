@@ -29,7 +29,6 @@
       # ctls
       flyctl
       kubectl
-      zerotierone
 
       # programming languages
       volta
