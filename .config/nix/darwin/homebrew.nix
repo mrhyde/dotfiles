@@ -26,6 +26,7 @@
       "ghostty"
       "gitkraken"
       "ngrok"
+      "orbstack"
       "postman"
       "tableplus"
       "zerotier-one"
@@ -44,6 +45,8 @@
     ];
     brews = [
       "docker"
+      "docker-buildx"
+      "docker-compose"
       "colima"
     ];
     taps = [];

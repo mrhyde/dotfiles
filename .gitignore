@@ -4,6 +4,7 @@
 .cache
 .CFUserTextEncoding
 .claude*
+.colima
 .config/astro
 .config/cody-ai
 .config/Cody*
