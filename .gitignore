@@ -17,6 +17,7 @@
 .config/GitKraken
 .config/google-chrome
 .config/nats
+.config/raycast
 .config/uv
 .deno
 .docker

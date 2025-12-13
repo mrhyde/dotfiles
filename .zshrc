@@ -116,8 +116,6 @@ alias aws='sudo docker run --rm -it -v ~/.aws:/root/.aws -v $(pwd):/aws -e AWS_P
 alias dive='docker run --rm -it -v /var/run/docker.sock:/var/run/docker.sock wagoodman/dive'
 alias code='code-insiders'
 alias explorer='explorer.exe .'
-alias gitkraken='gitkraken --disable-gpu'
-alias cc='codecat'
 alias gsync='find ./ -maxdepth 1 -mindepth 1 -type d -exec sh -c "cd \"{}\" && git pull" \;'
 
 # Add flags to existing aliases.
