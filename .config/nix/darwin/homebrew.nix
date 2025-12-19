@@ -16,7 +16,6 @@
     # nixpkgs is best for CLI tools
     casks = [
       # OS enhancements
-      "cleanshot"
       "raycast"
       # "hiddenbar"
       # "betterdisplay"
@@ -42,6 +41,8 @@
       "notion"
       "iina"
       "daisydisk"
+      "cleanshot"
+      "quickrecorder"
     ];
     brews = [
       "docker"
@@ -49,6 +50,8 @@
       "docker-compose"
       "colima"
     ];
-    taps = [];
+    taps = [
+      "lihaoyun6/tap"
+    ];
   };
 }
