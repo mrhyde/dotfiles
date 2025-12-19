@@ -4,6 +4,7 @@
     packages = with pkgs; [
       # dev tools
       bat
+      cloc
       curl
       eza
       fzf
