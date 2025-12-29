@@ -18,6 +18,7 @@
 .config/google-chrome
 .config/nats
 .config/raycast
+.config/sst
 .config/uv
 .deno
 .docker
@@ -41,6 +42,7 @@
 .npm
 .ollama
 .pki
+.pulumi
 .quokka
 .ssh
 .sudo*
