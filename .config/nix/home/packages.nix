@@ -7,6 +7,7 @@
       cloc
       curl
       eza
+      fd
       fzf
       gh
       gnupg
@@ -17,6 +18,7 @@
       lazygit
       neofetch
       openssh
+      rainfrog
       ripgrep
       tmux
       tree
