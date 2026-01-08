@@ -13,8 +13,12 @@
       "Bash(ls *)",
       "Bash(npx *)",
       "Bash(tail *)",
+      "Bash(tee *)",
+      "Bash(tree *)",
       "Bash(tsx *)",
-      "Bash(uvx *)"
+      "Bash(uvx *)",
+      "Bash(wc *)",
+      "Bash(xargs *)"
     ],
     "deny": [
       "Bash(python *)",
