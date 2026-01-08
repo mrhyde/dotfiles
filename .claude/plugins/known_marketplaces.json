@@ -12,7 +12,7 @@
       "source": "url",
       "url": "https://superchargeclaudecode.com/api/marketplace.json"
     },
-    "installLocation": "/Users/jason/.claude/plugins/marketplaces/supercharge-claude-code",
-    "lastUpdated": "2026-01-08T05:13:11.689Z"
+    "installLocation": "/home/jason/.claude/plugins/marketplaces/supercharge-claude-code",
+    "lastUpdated": "2026-01-08T05:21:54.142Z"
   }
 }
