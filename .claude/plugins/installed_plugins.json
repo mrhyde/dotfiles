@@ -70,6 +70,16 @@
         "lastUpdated": "2026-01-08T02:55:16.458Z",
         "gitCommitSha": "da140df58f1b1186f09b1bb609738c7c7f3358d8"
       }
+    ],
+    "code-simplifier@supercharge-claude-code": [
+      {
+        "scope": "user",
+        "installPath": "/Users/jason/.claude/plugins/cache/supercharge-claude-code/code-simplifier/1.0.0",
+        "version": "1.0.0",
+        "installedAt": "2026-01-08T05:13:19.749Z",
+        "lastUpdated": "2026-01-08T05:13:19.749Z",
+        "gitCommitSha": "3ea4c8267c85de7eb35f877697d8e9e064448d80"
+      }
     ]
   }
 }
