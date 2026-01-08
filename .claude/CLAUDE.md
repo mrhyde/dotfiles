@@ -96,6 +96,8 @@
 - Regular dependency audits (npm audit)
 - Prefer widely-adopted, maintained libraries
 - Document non-obvious tool choices
+- Use tsx for TypeScript/JavaScript files, never use ts-node
+- Use uvx for Python, never call python directly
 
 ## Documentation
 - README with setup instructions
