@@ -3,7 +3,12 @@
 .bun
 .cache
 .CFUserTextEncoding
-.claude*
+.claude.json
+.claude/*
+!.claude/commands/*
+!.claude/plugins/installed_plugins.json
+!.claude/plugins/known_marketplaces.json
+!.claude/settings.json
 .colima
 .config/astro
 .config/cody-ai
