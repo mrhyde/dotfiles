@@ -6,6 +6,7 @@
 .claude.json*
 .claude/*
 !.claude/CLAUDE.md
+!.claude/agents*
 !.claude/commands*
 !.claude/plugins/installed_plugins.json
 !.claude/plugins/known_marketplaces.json
