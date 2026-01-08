@@ -1,10 +1,33 @@
 {
+  "permissions": {
+    "allow": [
+      "Bash(* add)",
+      "Bash(* install)",
+      "Bash(cat *)",
+      "Bash(echo *)",
+      "Bash(fd *)",
+      "Bash(find *)",
+      "Bash(git *)",
+      "Bash(grep *)",
+      "Bash(head *)",
+      "Bash(ls *)",
+      "Bash(npx *)",
+      "Bash(tail *)",
+      "Bash(tsx *)",
+      "Bash(uvx *)"
+    ],
+    "deny": [
+      "Bash(python *)",
+      "Bash(python3 *)"
+    ]
+  },
   "enabledPlugins": {
     "github@claude-plugins-official": true,
     "feature-dev@claude-plugins-official": true,
     "code-review@claude-plugins-official": true,
     "commit-commands@claude-plugins-official": true,
     "security-guidance@claude-plugins-official": true,
-    "typescript-lsp@claude-plugins-official": true
+    "typescript-lsp@claude-plugins-official": true,
+    "ralph-loop@claude-plugins-official": true
   }
 }
