@@ -116,7 +116,8 @@ alias aws='sudo docker run --rm -it -v ~/.aws:/root/.aws -v $(pwd):/aws -e AWS_P
 alias dive='docker run --rm -it -v /var/run/docker.sock:/var/run/docker.sock wagoodman/dive'
 alias code='code-insiders'
 alias explorer='explorer.exe .'
-alias gsync='find ./ -maxdepth 1 -mindepth 1 -type d -exec sh -c "cd \"{}\" && git pull" \;'
+alias gsync='find ./ -maxdepth 1 -mindepth 1 -type d -exec sh -c '\''cd "$1" && [ -d .git ] && git pull'\'' _ {} \;'
+alias nix-switch='sudo darwin-rebuild switch --flake ~/.config/nix'
 
 # Add flags to existing aliases.
 alias ls="${aliases[ls]:-ls} -A"
