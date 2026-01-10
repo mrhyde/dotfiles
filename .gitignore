@@ -5,8 +5,8 @@
 .CFUserTextEncoding
 .claude.json*
 .claude/*
-!.claude/CLAUDE.md
 !.claude/agents*
+!.claude/CLAUDE.md
 !.claude/commands*
 !.claude/plugins/installed_plugins.json
 !.claude/plugins/known_marketplaces.json
@@ -19,6 +19,7 @@
 .config/configstore/update-notifier*
 .config/Cypress
 .config/dconf/user
+.config/gh
 .config/ghostty
 .config/git
 .config/GitKraken
