@@ -6,11 +6,13 @@
       bat
       cloc
       curl
+      direnv
       eza
       fd
       fzf
       gh
       gnupg
+      granted
       htop
       jc
       jq
