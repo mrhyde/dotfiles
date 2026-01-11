@@ -4,50 +4,50 @@
     "github@claude-plugins-official": [
       {
         "scope": "user",
-        "installPath": "/home/jason/.claude/plugins/cache/claude-plugins-official/github/113b335d11ae",
-        "version": "113b335d11ae",
+        "installPath": "/home/jason/.claude/plugins/cache/claude-plugins-official/github/f1be96f0fb58",
+        "version": "f1be96f0fb58",
         "installedAt": "2026-01-04T22:59:38.034Z",
-        "lastUpdated": "2026-01-08T00:58:44.488Z",
+        "lastUpdated": "2026-01-09T03:21:44.246Z",
         "gitCommitSha": "33ac7e298aefc38f1766d5fc6b93524ac2dcbab7"
       }
     ],
     "feature-dev@claude-plugins-official": [
       {
         "scope": "user",
-        "installPath": "/home/jason/.claude/plugins/cache/claude-plugins-official/feature-dev/113b335d11ae",
-        "version": "113b335d11ae",
+        "installPath": "/home/jason/.claude/plugins/cache/claude-plugins-official/feature-dev/f1be96f0fb58",
+        "version": "f1be96f0fb58",
         "installedAt": "2026-01-04T22:59:38.057Z",
-        "lastUpdated": "2026-01-08T00:58:44.495Z",
+        "lastUpdated": "2026-01-09T03:21:44.253Z",
         "gitCommitSha": "33ac7e298aefc38f1766d5fc6b93524ac2dcbab7"
       }
     ],
     "code-review@claude-plugins-official": [
       {
         "scope": "user",
-        "installPath": "/home/jason/.claude/plugins/cache/claude-plugins-official/code-review/113b335d11ae",
-        "version": "113b335d11ae",
+        "installPath": "/home/jason/.claude/plugins/cache/claude-plugins-official/code-review/f1be96f0fb58",
+        "version": "f1be96f0fb58",
         "installedAt": "2026-01-04T22:59:38.080Z",
-        "lastUpdated": "2026-01-08T00:58:44.499Z",
+        "lastUpdated": "2026-01-09T03:21:44.260Z",
         "gitCommitSha": "33ac7e298aefc38f1766d5fc6b93524ac2dcbab7"
       }
     ],
     "commit-commands@claude-plugins-official": [
       {
         "scope": "user",
-        "installPath": "/home/jason/.claude/plugins/cache/claude-plugins-official/commit-commands/113b335d11ae",
-        "version": "113b335d11ae",
+        "installPath": "/home/jason/.claude/plugins/cache/claude-plugins-official/commit-commands/f1be96f0fb58",
+        "version": "f1be96f0fb58",
         "installedAt": "2026-01-04T22:59:38.099Z",
-        "lastUpdated": "2026-01-08T00:58:44.505Z",
+        "lastUpdated": "2026-01-09T03:21:44.266Z",
         "gitCommitSha": "33ac7e298aefc38f1766d5fc6b93524ac2dcbab7"
       }
     ],
     "security-guidance@claude-plugins-official": [
       {
         "scope": "user",
-        "installPath": "/home/jason/.claude/plugins/cache/claude-plugins-official/security-guidance/113b335d11ae",
-        "version": "113b335d11ae",
+        "installPath": "/home/jason/.claude/plugins/cache/claude-plugins-official/security-guidance/f1be96f0fb58",
+        "version": "f1be96f0fb58",
         "installedAt": "2026-01-04T22:59:38.123Z",
-        "lastUpdated": "2026-01-08T00:58:44.509Z",
+        "lastUpdated": "2026-01-09T03:21:44.271Z",
         "gitCommitSha": "33ac7e298aefc38f1766d5fc6b93524ac2dcbab7"
       }
     ],
@@ -64,21 +64,21 @@
     "ralph-loop@claude-plugins-official": [
       {
         "scope": "user",
-        "installPath": "/home/jason/.claude/plugins/cache/claude-plugins-official/ralph-loop/113b335d11ae",
-        "version": "113b335d11ae",
+        "installPath": "/home/jason/.claude/plugins/cache/claude-plugins-official/ralph-loop/f1be96f0fb58",
+        "version": "f1be96f0fb58",
         "installedAt": "2026-01-08T02:38:34.185Z",
-        "lastUpdated": "2026-01-08T02:55:16.458Z",
+        "lastUpdated": "2026-01-09T03:21:44.277Z",
         "gitCommitSha": "da140df58f1b1186f09b1bb609738c7c7f3358d8"
       }
     ],
-    "code-simplifier@supercharge-claude-code": [
+    "code-simplifier@claude-plugins-official": [
       {
         "scope": "user",
-        "installPath": "/Users/jason/.claude/plugins/cache/supercharge-claude-code/code-simplifier/1.0.0",
+        "installPath": "/home/jason/.claude/plugins/cache/claude-plugins-official/code-simplifier/1.0.0",
         "version": "1.0.0",
-        "installedAt": "2026-01-08T05:17:50.421Z",
-        "lastUpdated": "2026-01-08T05:17:50.421Z",
-        "gitCommitSha": "3ea4c8267c85de7eb35f877697d8e9e064448d80"
+        "installedAt": "2026-01-09T03:23:40.617Z",
+        "lastUpdated": "2026-01-09T03:23:40.617Z",
+        "gitCommitSha": "b9057cd49e40fa896862db0fb5e319c883d5cebe"
       }
     ]
   }

@@ -5,7 +5,7 @@
       "repo": "anthropics/claude-plugins-official"
     },
     "installLocation": "/home/jason/.claude/plugins/marketplaces/claude-plugins-official",
-    "lastUpdated": "2026-01-08T04:37:46.257Z"
+    "lastUpdated": "2026-01-09T03:21:44.219Z"
   },
   "supercharge-claude-code": {
     "source": {
@@ -13,6 +13,6 @@
       "url": "https://superchargeclaudecode.com/api/marketplace.json"
     },
     "installLocation": "/home/jason/.claude/plugins/marketplaces/supercharge-claude-code",
-    "lastUpdated": "2026-01-08T05:21:54.142Z"
+    "lastUpdated": "2026-01-09T03:22:42.041Z"
   }
 }
