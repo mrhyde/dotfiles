@@ -112,7 +112,7 @@ compdef _directories md
 alias tree='tree -a -I .git --dirsfirst'
 alias nano='nano --mouse'
 alias clear_history='echo "" > ~/.zsh_history & exec $SHELL -l'
-alias aws='sudo docker run --rm -it -v ~/.aws:/root/.aws -v $(pwd):/aws -e AWS_PROFILE amazon/aws-cli'
+alias aws='sudo docker run --rm -it -v ~/.aws:/root/.aws -v $(pwd):/aws -e AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY -e AWS_SESSION_TOKEN -e AWS_PROFILE -e AWS_REGION -e AWS_DEFAULT_REGION amazon/aws-cli'
 alias dive='docker run --rm -it -v /var/run/docker.sock:/var/run/docker.sock wagoodman/dive'
 alias code='code-insiders'
 alias explorer='explorer.exe .'
