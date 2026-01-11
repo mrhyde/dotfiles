@@ -3,6 +3,7 @@
   home = {
     packages = with pkgs; [
       # dev tools
+      awscli2
       bat
       cloc
       curl
