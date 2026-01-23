@@ -23,6 +23,7 @@
       openssh
       rainfrog
       ripgrep
+      ssm-session-manager-plugin
       tmux
       tree
       unrar
