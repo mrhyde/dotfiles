@@ -1,12 +1,15 @@
 {
+  "attribution": {},
   "permissions": {
     "allow": [
       "Bash(* add)",
       "Bash(* install)",
       "Bash(cat *)",
+      "Bash(docker *)",
       "Bash(echo *)",
       "Bash(fd *)",
       "Bash(find *)",
+      "Bash(gh *)",
       "Bash(git *)",
       "Bash(grep *)",
       "Bash(head *)",
@@ -22,7 +25,13 @@
     ],
     "deny": [
       "Bash(python *)",
-      "Bash(python3 *)"
+      "Bash(python)",
+      "Bash(python3 *)",
+      "Bash(python3)",
+      "Bash(*| python *)",
+      "Bash(*| python3 *)",
+      "Bash(*/python *)",
+      "Bash(*/python3 *)"
     ]
   },
   "enabledPlugins": {
@@ -34,5 +43,18 @@
     "typescript-lsp@claude-plugins-official": true,
     "ralph-loop@claude-plugins-official": true,
     "code-simplifier@claude-plugins-official": true
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if echo \"$CLAUDE_TOOL_INPUT\" | grep -qiE '\\bpython[0-9]*\\b'; then echo 'BLOCKED: Use uvx instead of calling python directly. See CLAUDE.md instructions.'; exit 2; fi"
+          }
+        ]
+      }
+    ]
   }
 }
