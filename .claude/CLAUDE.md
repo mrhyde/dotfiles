@@ -84,11 +84,12 @@
 - Keep dependencies updated
 
 ## Git & Version Control
-- Meaningful commit messages (imperative mood)
+- Meaningful commit messages (imperative mood, all lowercase)
 - Small, focused commits
 - Feature branches, PR reviews before merge
 - Squash commits before merging to main
 - Tag releases (semantic versioning)
+- Never attribute or co-author Claude in git commits or PRs
 
 ## Dependencies & Tooling
 - Justify new dependencies (bundle size, maintenance, cost)
