@@ -12,6 +12,7 @@
 !.claude/plugins/known_marketplaces.json
 !.claude/settings.json
 .colima
+.config/asciinema
 .config/astro
 .config/cody-ai
 .config/Cody*
@@ -35,6 +36,7 @@
 .gitkraken
 .gk
 .gnupg
+.granted
 .hushlogin
 .languine
 .lesshst
