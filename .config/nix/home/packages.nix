@@ -19,6 +19,7 @@
       jq
       lazydocker
       lazygit
+      loc
       neofetch
       openssh
       rainfrog
@@ -42,6 +43,7 @@
       uv
 
       # misc
+      asciinema
       nil
       nixfmt-rfc-style
       yt-dlp

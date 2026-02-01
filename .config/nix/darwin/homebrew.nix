@@ -33,7 +33,6 @@
       # communication
       "microsoft-teams"
       "slack"
-      "loom"
       "zoom"
 
       # other
