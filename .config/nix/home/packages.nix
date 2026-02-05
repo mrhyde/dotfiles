@@ -7,9 +7,9 @@
       bat
       cloc
       curl
-      direnv
       eza
       fd
+      frida-tools
       fzf
       gh
       gnupg
@@ -19,7 +19,6 @@
       jq
       lazydocker
       lazygit
-      loc
       neofetch
       openssh
       rainfrog
@@ -58,6 +57,10 @@
   };
 
   programs = {
+    direnv = {
+      enable = true;
+      config.global.load_dotenv = true;
+    };
     eza = {
       enable = true;
       enableZshIntegration = true;
