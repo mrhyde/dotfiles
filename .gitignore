@@ -1,3 +1,4 @@
+.android
 .aws
 .bash_sessions
 .bun
@@ -20,6 +21,8 @@
 .config/configstore/update-notifier*
 .config/Cypress
 .config/dconf/user
+.config/direnv
+.config/frida
 .config/gh
 .config/ghostty
 .config/git
@@ -36,6 +39,7 @@
 .gitkraken
 .gk
 .gnupg
+.gradle
 .granted
 .hushlogin
 .languine
@@ -43,11 +47,13 @@
 .local/bin
 .local/share/amp
 .local/share/applications/mimeapps.list
+.local/share/direnv
 .local/share/nats
 .local/share/rainfrog
 .local/share/recently-used.xbel
 .local/share/vscode-beggar
 .local/state
+.mitmproxy
 .nix*
 .npm
 .ollama
@@ -67,6 +73,7 @@
 .zsh_sessions
 *.zwc
 *history
+AndroidStudioProjects
 Applications
 bin
 Desktop
