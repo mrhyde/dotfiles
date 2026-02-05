@@ -4,50 +4,50 @@
     "github@claude-plugins-official": [
       {
         "scope": "user",
-        "installPath": "/home/jason/.claude/plugins/cache/claude-plugins-official/github/f1be96f0fb58",
-        "version": "f1be96f0fb58",
+        "installPath": "/home/jason/.claude/plugins/cache/claude-plugins-official/github/27d2b86d72da",
+        "version": "27d2b86d72da",
         "installedAt": "2026-01-04T22:59:38.034Z",
-        "lastUpdated": "2026-01-09T03:21:44.246Z",
+        "lastUpdated": "2026-01-30T09:51:38.336Z",
         "gitCommitSha": "33ac7e298aefc38f1766d5fc6b93524ac2dcbab7"
       }
     ],
     "feature-dev@claude-plugins-official": [
       {
         "scope": "user",
-        "installPath": "/home/jason/.claude/plugins/cache/claude-plugins-official/feature-dev/f1be96f0fb58",
-        "version": "f1be96f0fb58",
+        "installPath": "/home/jason/.claude/plugins/cache/claude-plugins-official/feature-dev/27d2b86d72da",
+        "version": "27d2b86d72da",
         "installedAt": "2026-01-04T22:59:38.057Z",
-        "lastUpdated": "2026-01-09T03:21:44.253Z",
+        "lastUpdated": "2026-01-30T09:51:38.348Z",
         "gitCommitSha": "33ac7e298aefc38f1766d5fc6b93524ac2dcbab7"
       }
     ],
     "code-review@claude-plugins-official": [
       {
         "scope": "user",
-        "installPath": "/home/jason/.claude/plugins/cache/claude-plugins-official/code-review/f1be96f0fb58",
-        "version": "f1be96f0fb58",
+        "installPath": "/home/jason/.claude/plugins/cache/claude-plugins-official/code-review/27d2b86d72da",
+        "version": "27d2b86d72da",
         "installedAt": "2026-01-04T22:59:38.080Z",
-        "lastUpdated": "2026-01-09T03:21:44.260Z",
+        "lastUpdated": "2026-01-30T09:51:38.356Z",
         "gitCommitSha": "33ac7e298aefc38f1766d5fc6b93524ac2dcbab7"
       }
     ],
     "commit-commands@claude-plugins-official": [
       {
         "scope": "user",
-        "installPath": "/home/jason/.claude/plugins/cache/claude-plugins-official/commit-commands/f1be96f0fb58",
-        "version": "f1be96f0fb58",
+        "installPath": "/home/jason/.claude/plugins/cache/claude-plugins-official/commit-commands/27d2b86d72da",
+        "version": "27d2b86d72da",
         "installedAt": "2026-01-04T22:59:38.099Z",
-        "lastUpdated": "2026-01-09T03:21:44.266Z",
+        "lastUpdated": "2026-01-30T09:51:38.364Z",
         "gitCommitSha": "33ac7e298aefc38f1766d5fc6b93524ac2dcbab7"
       }
     ],
     "security-guidance@claude-plugins-official": [
       {
         "scope": "user",
-        "installPath": "/home/jason/.claude/plugins/cache/claude-plugins-official/security-guidance/f1be96f0fb58",
-        "version": "f1be96f0fb58",
+        "installPath": "/home/jason/.claude/plugins/cache/claude-plugins-official/security-guidance/27d2b86d72da",
+        "version": "27d2b86d72da",
         "installedAt": "2026-01-04T22:59:38.123Z",
-        "lastUpdated": "2026-01-09T03:21:44.271Z",
+        "lastUpdated": "2026-01-30T09:51:38.373Z",
         "gitCommitSha": "33ac7e298aefc38f1766d5fc6b93524ac2dcbab7"
       }
     ],
@@ -64,10 +64,10 @@
     "ralph-loop@claude-plugins-official": [
       {
         "scope": "user",
-        "installPath": "/home/jason/.claude/plugins/cache/claude-plugins-official/ralph-loop/f1be96f0fb58",
-        "version": "f1be96f0fb58",
+        "installPath": "/home/jason/.claude/plugins/cache/claude-plugins-official/ralph-loop/27d2b86d72da",
+        "version": "27d2b86d72da",
         "installedAt": "2026-01-08T02:38:34.185Z",
-        "lastUpdated": "2026-01-09T03:21:44.277Z",
+        "lastUpdated": "2026-01-30T09:51:38.386Z",
         "gitCommitSha": "da140df58f1b1186f09b1bb609738c7c7f3358d8"
       }
     ],
@@ -79,6 +79,56 @@
         "installedAt": "2026-01-09T03:23:40.617Z",
         "lastUpdated": "2026-01-09T03:23:40.617Z",
         "gitCommitSha": "b9057cd49e40fa896862db0fb5e319c883d5cebe"
+      }
+    ],
+    "figma@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/home/jason/.claude/plugins/cache/claude-plugins-official/figma/1.0.0",
+        "version": "1.0.0",
+        "installedAt": "2026-01-14T11:56:50.101Z",
+        "lastUpdated": "2026-01-14T11:56:50.101Z",
+        "gitCommitSha": "20aca44ee6ba6092037e943c151c067896828360"
+      }
+    ],
+    "pr-review-toolkit@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/home/jason/.claude/plugins/cache/claude-plugins-official/pr-review-toolkit/27d2b86d72da",
+        "version": "27d2b86d72da",
+        "installedAt": "2026-01-25T08:28:47.804Z",
+        "lastUpdated": "2026-01-30T09:51:38.400Z",
+        "gitCommitSha": "e30768372b4150ca1bc0839d93283e8edc30d60d"
+      }
+    ],
+    "claude-md-management@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/home/jason/.claude/plugins/cache/claude-plugins-official/claude-md-management/1.0.0",
+        "version": "1.0.0",
+        "installedAt": "2026-01-25T08:32:44.861Z",
+        "lastUpdated": "2026-01-25T08:32:44.861Z",
+        "gitCommitSha": "e30768372b4150ca1bc0839d93283e8edc30d60d"
+      }
+    ],
+    "claude-code-setup@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/home/jason/.claude/plugins/cache/claude-plugins-official/claude-code-setup/1.0.0",
+        "version": "1.0.0",
+        "installedAt": "2026-01-25T08:32:44.897Z",
+        "lastUpdated": "2026-01-25T08:32:44.897Z",
+        "gitCommitSha": "e30768372b4150ca1bc0839d93283e8edc30d60d"
+      }
+    ],
+    "playwright-cli@playwright-cli": [
+      {
+        "scope": "user",
+        "installPath": "/home/jason/.claude/plugins/cache/playwright-cli/playwright-cli/0.0.1",
+        "version": "0.0.1",
+        "installedAt": "2026-02-05T15:26:08.632Z",
+        "lastUpdated": "2026-02-05T15:26:08.632Z",
+        "gitCommitSha": "528375edbec3b54f52e4dbace476c75467f4977a"
       }
     ]
   }

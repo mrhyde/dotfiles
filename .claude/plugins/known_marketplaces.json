@@ -5,14 +5,14 @@
       "repo": "anthropics/claude-plugins-official"
     },
     "installLocation": "/home/jason/.claude/plugins/marketplaces/claude-plugins-official",
-    "lastUpdated": "2026-01-09T03:21:44.219Z"
+    "lastUpdated": "2026-02-05T19:07:49.832Z"
   },
-  "supercharge-claude-code": {
+  "playwright-cli": {
     "source": {
-      "source": "url",
-      "url": "https://superchargeclaudecode.com/api/marketplace.json"
+      "source": "github",
+      "repo": "microsoft/playwright-cli"
     },
-    "installLocation": "/home/jason/.claude/plugins/marketplaces/supercharge-claude-code",
-    "lastUpdated": "2026-01-09T03:22:42.041Z"
+    "installLocation": "/home/jason/.claude/plugins/marketplaces/playwright-cli",
+    "lastUpdated": "2026-02-05T15:25:57.764Z"
   }
 }
