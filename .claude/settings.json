@@ -7,6 +7,10 @@
     "allow": [
       "Bash(* add)",
       "Bash(* install)",
+      "Bash(aws cloudwatch *)",
+      "Bash(aws logs *)",
+      "Bash(aws s3 *)",
+      "Bash(aws sts *)",
       "Bash(cat *)",
       "Bash(docker *)",
       "Bash(echo *)",
@@ -14,17 +18,28 @@
       "Bash(find *)",
       "Bash(gh *)",
       "Bash(git *)",
+      "Bash(git commit:*)",
       "Bash(grep *)",
       "Bash(head *)",
       "Bash(ls *)",
+      "Bash(mosasic *)",
       "Bash(npx *)",
+      "Bash(poe *)",
+      "Bash(ruff *)",
+      "Bash(source .venv/bin/activate)",
       "Bash(tail *)",
       "Bash(tee *)",
       "Bash(tree *)",
       "Bash(tsx *)",
+      "Bash(ty *)",
+      "Bash(uv *)",
+      "Bash(uvx *)",
       "Bash(uvx *)",
       "Bash(wc *)",
-      "Bash(xargs *)"
+      "Bash(xargs *)",
+      "Skill(code-review:code-review)",
+      "WebFetch(domain:github.com)",
+      "WebSearch"
     ],
     "deny": [
       "Bash(python *)",
@@ -48,19 +63,30 @@
           }
         ]
       }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "file_path=$(jq -r '.tool_input.file_path') && [[ \"$file_path\" == *.py ]] && uv run ruff format \"$file_path\" || true"
+          }
+        ]
+      }
     ]
   },
   "enabledPlugins": {
     "feature-dev@claude-plugins-official": true,
-    "code-review@claude-plugins-official": true,
     "commit-commands@claude-plugins-official": true,
     "security-guidance@claude-plugins-official": true,
     "typescript-lsp@claude-plugins-official": true,
     "ralph-loop@claude-plugins-official": true,
     "code-simplifier@claude-plugins-official": true,
-    "pr-review-toolkit@claude-plugins-official": true,
     "claude-md-management@claude-plugins-official": true,
     "claude-code-setup@claude-plugins-official": true,
     "playwright-cli@playwright-cli": true
-  }
+  },
+  "syntaxHighlightingDisabled": true,
+  "autoUpdatesChannel": "latest"
 }
