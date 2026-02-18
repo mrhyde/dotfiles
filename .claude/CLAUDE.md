@@ -84,7 +84,7 @@
 - Keep dependencies updated
 
 ## Git & Version Control
-- Meaningful commit messages (imperative mood, all lowercase)
+- Meaningful commit messages (imperative mood, all lowercase, NO Conventional Commits prefixes like "fix:", "feat:")
 - Small, focused commits
 - Feature branches, PR reviews before merge
 - Squash commits before merging to main
