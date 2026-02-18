@@ -5,7 +5,7 @@
       "repo": "anthropics/claude-plugins-official"
     },
     "installLocation": "/home/jason/.claude/plugins/marketplaces/claude-plugins-official",
-    "lastUpdated": "2026-02-05T19:07:49.832Z"
+    "lastUpdated": "2026-02-18T21:39:46.584Z"
   },
   "playwright-cli": {
     "source": {
@@ -13,6 +13,6 @@
       "repo": "microsoft/playwright-cli"
     },
     "installLocation": "/home/jason/.claude/plugins/marketplaces/playwright-cli",
-    "lastUpdated": "2026-02-05T15:25:57.764Z"
+    "lastUpdated": "2026-02-05T21:39:11.679Z"
   }
 }
