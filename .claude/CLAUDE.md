@@ -99,6 +99,7 @@
 - Document non-obvious tool choices
 - Use tsx for TypeScript/JavaScript files, never use ts-node
 - Use uvx for Python, never call python directly
+- Use `npm view <package>` to look up the latest package version instead of web search
 
 ## Documentation
 - README with setup instructions
