@@ -49,6 +49,7 @@
 .local/share/applications/mimeapps.list
 .local/share/direnv
 .local/share/nats
+.local/share/pnpm
 .local/share/rainfrog
 .local/share/recently-used.xbel
 .local/share/vscode-beggar
