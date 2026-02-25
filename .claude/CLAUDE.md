@@ -17,7 +17,7 @@
 - 2-space indentation for TypeScript/JavaScript
 - Descriptive variable names (avoid single letters except loop counters)
 - Prefer const over let, avoid var
-- Max line length: 100 characters
+- Max line length: 120 characters
 
 ## Architecture & Design Patterns
 - Follow modular architecture (separate concerns)
