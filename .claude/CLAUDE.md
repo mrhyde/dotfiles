@@ -101,6 +101,9 @@
 - Use uvx for Python, never call python directly
 - Use `npm view <package>` to look up the latest package version instead of web search
 
+## Writing & Communication
+- Do not use dashes, long dashes, or em dashes in written output unless absolutely necessary
+
 ## Documentation
 - README with setup instructions
 - Inline comments for complex logic only
