@@ -47,6 +47,7 @@
 .local/bin
 .local/share/amp
 .local/share/applications/mimeapps.list
+.local/share/claude/versions
 .local/share/direnv
 .local/share/nats
 .local/share/pnpm
