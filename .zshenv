@@ -11,7 +11,14 @@ if [ -n "${ZSH_VERSION-}" ]; then
   # in ~/.zshenv (see comments at the top!), do it here:
   #
   #   export GOPATH=$HOME/go
-  #
+
+  # Claude Code: sign commits with Claude's GPG key
+  if [[ -n "$CLAUDECODE" ]]; then
+    export GIT_CONFIG_COUNT=1
+    export GIT_CONFIG_KEY_0=user.signingkey
+    export GIT_CONFIG_VALUE_0=9B5EA675F5164BF6
+  fi
+
   # Do not change anything else in this file.
 
   : ${ZDOTDIR:=~}
