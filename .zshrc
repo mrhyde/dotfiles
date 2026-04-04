@@ -75,7 +75,7 @@ export DENO_INSTALL="$HOME/.deno"
 export LIBVA_DRIVER_NAME=d3d12
 
 # Extend PATH.
-path=(~/bin $HOME/.local/bin $VOLTA_HOME/bin $DENO_INSTALL/bin $path)
+path=(~/bin $HOME/.local/bin $VOLTA_HOME/bin $DENO_INSTALL/bin $HOME/.cargo/bin $HOME/.vite-plus/bin $path)
 
 # Source additional local files if they exist.
 z4h source ~/.env.zsh
@@ -129,3 +129,6 @@ setopt no_auto_menu  # require an extra TAB press to open the completion menu
 
 # Automatically start dbus
 sudo /etc/init.d/dbus start &> /dev/null
+
+# Vite+ shell function & completions
+. "$HOME/.vite-plus/env"
