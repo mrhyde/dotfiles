@@ -48,8 +48,13 @@
 - Pin versions in package.json
 - Prefer widely-adopted, maintained libraries
 - Use tsx for TypeScript/JavaScript files, never use ts-node
-- Use uvx for Python, never call python directly
 - Use `npm view <package>` to look up the latest package version instead of web search
+- NEVER use python, python3, pip, or pip3 directly. Always use uv/uvx:
+  - Run a script: `uv run script.py` (not `python script.py`)
+  - Run with deps: `uv run --with package script.py` (not `pip install package && python script.py`)
+  - Run a CLI tool: `uvx tool` (not `pip install tool && tool`)
+  - Add a dependency: `uv add package` (not `pip install package`)
+  - Run in a project: `uv run` respects pyproject.toml automatically
 
 ## Writing & Communication
 - Do not use dashes, long dashes, or em dashes in written output unless absolutely necessary

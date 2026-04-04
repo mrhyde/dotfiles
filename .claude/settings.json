@@ -11,32 +11,22 @@
       "Bash(aws logs *)",
       "Bash(aws s3 *)",
       "Bash(aws sts *)",
-      "Bash(cat *)",
       "Bash(docker *)",
-      "Bash(echo *)",
-      "Bash(fd *)",
-      "Bash(find *)",
       "Bash(gh *)",
       "Bash(git *)",
       "Bash(git commit:*)",
-      "Bash(grep *)",
-      "Bash(head *)",
-      "Bash(ls *)",
-      "Bash(mosasic *)",
+      "Bash(mosaic *)",
+      "Bash(npm *)",
       "Bash(npx *)",
+      "Bash(pnpm *)",
       "Bash(poe *)",
       "Bash(ruff *)",
       "Bash(source .venv/bin/activate)",
-      "Bash(tail *)",
       "Bash(tee *)",
-      "Bash(tree *)",
       "Bash(tsx *)",
       "Bash(ty *)",
       "Bash(uv *)",
       "Bash(uvx *)",
-      "Bash(uvx *)",
-      "Bash(wc *)",
-      "Bash(xargs *)",
       "Skill(code-review:code-review)",
       "WebFetch(domain:github.com)",
       "WebSearch"
@@ -63,7 +53,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "if echo \"$CLAUDE_TOOL_INPUT\" | grep -qiE '\\bpython[0-9]*\\b'; then echo 'BLOCKED: Use uvx instead of calling python directly. See CLAUDE.md instructions.'; exit 2; fi"
+            "command": "if echo \"$CLAUDE_TOOL_INPUT\" | grep -qiE '\\b(python[0-9]*|pip[0-9]*)\\b'; then echo 'BLOCKED: Never use python/pip directly. Use uv run, uvx, or uv add instead. See CLAUDE.md for examples.'; exit 2; fi"
           }
         ]
       }
