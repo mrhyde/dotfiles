@@ -42,14 +42,18 @@
       "WebSearch"
     ],
     "deny": [
+      "Bash(*/python *)",
+      "Bash(*/python3 *)",
+      "Bash(*| python *)",
+      "Bash(*| python3 *)",
+      "Bash(pip *)",
+      "Bash(pip)",
+      "Bash(pip3 *)",
+      "Bash(pip3)",
       "Bash(python *)",
       "Bash(python)",
       "Bash(python3 *)",
-      "Bash(python3)",
-      "Bash(*| python *)",
-      "Bash(*| python3 *)",
-      "Bash(*/python *)",
-      "Bash(*/python3 *)"
+      "Bash(python3)"
     ]
   },
   "hooks": {
@@ -81,12 +85,13 @@
     "commit-commands@claude-plugins-official": true,
     "security-guidance@claude-plugins-official": true,
     "typescript-lsp@claude-plugins-official": false,
-    "ralph-loop@claude-plugins-official": false,
     "code-simplifier@claude-plugins-official": true,
     "claude-md-management@claude-plugins-official": true,
     "claude-code-setup@claude-plugins-official": true,
-    "playwright-cli@playwright-cli": true
+    "remember@claude-plugins-official": true
   },
   "syntaxHighlightingDisabled": true,
-  "autoUpdatesChannel": "latest"
+  "effortLevel": "high",
+  "autoUpdatesChannel": "latest",
+  "skipDangerousModePermissionPrompt": true
 }
