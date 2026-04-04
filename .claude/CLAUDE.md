@@ -9,8 +9,8 @@
 - Measure what matters (user impact, revenue, costs), not vanity metrics
 
 ## Code Style & Formatting
-- Use Prettier defaults with single quotes
-- 2-space indentation for TypeScript/JavaScript
+- Use oxfmt for formatting (not Prettier, not Biome); configure via `.oxfmtrc.json`
+- Single quotes, 2-space indentation for TypeScript/JavaScript
 - Descriptive variable names (avoid single letters except loop counters)
 - Prefer const over let, avoid var
 - Max line length: 120 characters
@@ -47,8 +47,20 @@
 - Justify new dependencies (bundle size, maintenance, cost)
 - Pin versions in package.json
 - Prefer widely-adopted, maintained libraries
-- Use tsx for TypeScript/JavaScript files, never use ts-node
+- Use tsx for running TypeScript/JavaScript files, never use ts-node
 - Use `npm view <package>` to look up the latest package version instead of web search
+
+### TypeScript / JavaScript
+- Always target the latest stable TypeScript version
+- **Linting**: oxlint (not ESLint, not Biome); configure via `oxlint.config.ts`
+- **Formatting**: oxfmt (not Prettier, not Biome); configure via `.oxfmtrc.json`
+- **Building libraries**: tsdown (Rolldown + oxc under the hood) for ESM output and .d.ts generation
+- **Building apps**: Vite for dev/build; prefer Astro for web apps/sites (not Next.js, not Nest.js)
+- **Testing**: Vitest with v8 coverage (not Jest)
+- **Package validation**: publint + arethetypeswrong for library packages before publish
+- **Package manager**: pnpm (not npm, not yarn, not Turbopack)
+
+### Python
 - NEVER use python, python3, pip, or pip3 directly. Always use uv/uvx:
   - Run a script: `uv run script.py` (not `python script.py`)
   - Run with deps: `uv run --with package script.py` (not `pip install package && python script.py`)
