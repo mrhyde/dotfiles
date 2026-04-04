@@ -21,13 +21,15 @@
       # "betterdisplay"
 
       # dev
-      "visual-studio-code@insiders"
+      "android-studio"
       "ghostty"
       "gitkraken"
+      "http-toolkit"
+      "mitmproxy"
       "ngrok"
-      "orbstack"
       "postman"
       "tableplus"
+      "visual-studio-code@insiders"
       "zerotier-one"
 
       # communication
@@ -36,11 +38,12 @@
       "zoom"
 
       # other
-      "google-chrome"
-      "notion"
-      "iina"
-      "daisydisk"
+      "claude"
       "cleanshot"
+      "daisydisk"
+      "google-chrome"
+      "iina"
+      "notion"
       "quickrecorder"
     ];
     brews = [
