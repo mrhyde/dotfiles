@@ -14,11 +14,14 @@ in
 {
   home = {
     homeDirectory = "/home/${primaryUser}";
-    packages = [
-      (wrapWithNixGL pkgs.gitkraken "gitkraken")
+    packages = with pkgs; [
+      autoconf
+      dos2unix
+      nano
+      (wrapWithNixGL chromium "chromium")
+      (wrapWithNixGL gitkraken "gitkraken")
     ];
   };
 
   programs.home-manager.enable = true;
-  programs.zsh.enable = true;
 }

@@ -9,8 +9,8 @@
       curl
       eza
       fd
-      frida-tools
       fzf
+      gawk
       gh
       gnupg
       granted
@@ -19,6 +19,7 @@
       jq
       lazydocker
       lazygit
+      moreutils
       neofetch
       openssh
       rainfrog
@@ -49,10 +50,6 @@
       ffmpeg
       ollama
 
-      # fonts
-      nerd-fonts.fira-code
-      nerd-fonts.fira-mono
-      nerd-fonts.meslo-lg
     ];
   };
 

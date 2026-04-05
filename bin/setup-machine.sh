@@ -14,40 +14,19 @@ fi
 function install_packages() {
   local packages=(
     apt-transport-https
-    autoconf
-    bat
     ca-certificates
     command-not-found
-    curl
     dialog
-    dos2unix
-    eza
-    fd-find
-    gawk
-    git
-    gnupg2
     gzip
-    htop
-    jc
-    jq
     libglib2.0-bin
     locales
     mesa-va-drivers
-    moreutils
-    nano
-    ripgrep
     software-properties-common
     sudo
     systemd
-    tree
     tzdata
     ubuntu-release-upgrader-core
-    unrar
-    unzip
     vainfo
-    wget
-    zip
-    zsh
   )
 
   sudo apt update
@@ -55,10 +34,6 @@ function install_packages() {
   sudo apt install -y "${packages[@]}"
   sudo apt autoremove -y
   sudo apt autoclean
-}
-
-function install_volta() {
-  curl https://get.volta.sh | bash -s -- --skip-setup
 }
 
 function install_docker() {
@@ -157,7 +132,6 @@ main() {
   umask 0022
 
   install_packages
-  install_volta
   install_docker
   add_to_sudoers
   fix_systemd
