@@ -16,6 +16,7 @@
 .colima
 .config/.wrangler
 .config/asciinema
+.config/chromium
 .config/astro
 .config/cody-ai
 .config/Cody*
