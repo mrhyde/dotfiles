@@ -110,6 +110,12 @@ function fix_time_sync() {
   fi
 }
 
+function install_zerotier() {
+  if (( WSL )); then
+    curl -s https://install.zerotier.com | sudo bash
+  fi
+}
+
 # Set preferences for various applications.
 function set_preferences() {
   if (( WSL )); then
@@ -138,6 +144,7 @@ main() {
   fix_locale
   fix_wsl_interop
   fix_time_sync
+  install_zerotier
   set_preferences
 
   echo "SUCCESS"
