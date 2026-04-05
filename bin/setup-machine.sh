@@ -127,10 +127,11 @@ function fix_wsl_interop() {
 
 function fix_time_sync() {
   if (( WSL )); then
-    # Ref. https://github.com/microsoft/WSL/issues/8204#issuecomment-1338334154
-    sudo mkdir -p /etc/systemd/system/systemd-timesyncd.service.d
-    echo -e "[Unit]\nConditionVirtualization=" | sudo tee /etc/systemd/system/systemd-timesyncd.service.d/override.conf > /dev/null
-    sudo systemctl start systemd-timesyncd
+    # chrony replaces systemd-timesyncd as of Ubuntu 26.04
+    sudo apt-mark auto systemd-timesyncd 2>/dev/null || true
+    sudo apt install -y chrony
+    sudo systemctl enable chrony
+    sudo systemctl start chrony
   fi
 }
 
