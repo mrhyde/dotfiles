@@ -11,7 +11,8 @@
     username = primaryUser;
     stateVersion = "25.11";
     sessionVariables = {
-      # shared environment variables
+      EDITOR = "nano";
+      VISUAL = "nano";
     };
 
     # create .hushlogin file to suppress login messages
