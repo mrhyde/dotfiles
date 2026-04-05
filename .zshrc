@@ -120,7 +120,7 @@ alias gsync='find ./ -maxdepth 1 -mindepth 1 -type d -exec sh -c '\''cd "$1" && 
 if [[ "$(uname)" == "Darwin" ]]; then
   alias nix-switch='sudo darwin-rebuild switch --flake "$HOME/.config/nix#macbook"'
 else
-  alias nix-switch='home-manager switch --flake "$HOME/.config/nix#wsl"'
+  alias nix-switch='home-manager switch --flake "$HOME/.config/nix#wsl" --impure'
 fi
 alias assume=". assume"
 
