@@ -117,7 +117,11 @@ alias dive='docker run --rm -it -v /var/run/docker.sock:/var/run/docker.sock wag
 alias code='code-insiders'
 alias explorer='explorer.exe .'
 alias gsync='find ./ -maxdepth 1 -mindepth 1 -type d -exec sh -c '\''cd "$1" && [ -d .git ] && git pull'\'' _ {} \;'
-alias nix-switch='sudo darwin-rebuild switch --flake ~/.config/nix'
+if [[ "$(uname)" == "Darwin" ]]; then
+  alias nix-switch='sudo darwin-rebuild switch --flake "$HOME/.config/nix#macbook"'
+else
+  alias nix-switch='home-manager switch --flake "$HOME/.config/nix#wsl"'
+fi
 alias assume=". assume"
 
 # Add flags to existing aliases.
