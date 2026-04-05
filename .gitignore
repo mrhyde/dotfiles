@@ -15,6 +15,7 @@
 !.claude/settings.json
 .colima
 .config/.wrangler
+.config/environment.d
 .config/asciinema
 .config/chromium
 .config/astro
