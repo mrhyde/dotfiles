@@ -2,7 +2,6 @@
 {
   imports = [
     ./packages.nix
-    ./colima.nix
     ./ghostty.nix
     ./git.nix
     ./shell.nix

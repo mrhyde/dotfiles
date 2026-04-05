@@ -42,6 +42,7 @@
     users.${primaryUser} = {
       imports = [
         ../home
+        ../home/colima.nix
       ];
     };
     backupFileExtension = "bak";

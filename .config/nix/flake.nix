@@ -14,6 +14,10 @@
 
     # declarative homebrew management
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
+
+    # OpenGL wrapper for non-NixOS systems
+    nixgl.url = "github:nix-community/nixGL";
+    nixgl.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
@@ -23,6 +27,7 @@
       nixpkgs,
       home-manager,
       nix-homebrew,
+      nixgl,
       ...
     }@inputs:
     let
@@ -38,6 +43,20 @@
           ./hosts/macbook/configuration.nix
         ];
         specialArgs = { inherit inputs self primaryUser; };
+      };
+
+      # build wsl home config using:
+      # $ home-manager switch --flake .#wsl
+      homeConfigurations."wsl" = home-manager.lib.homeManagerConfiguration {
+        pkgs = import nixpkgs {
+          system = "x86_64-linux";
+          config.allowUnfree = true;
+        };
+        modules = [
+          ./home
+          ./hosts/wsl/configuration.nix
+        ];
+        extraSpecialArgs = { inherit inputs self primaryUser; };
       };
 
     };
