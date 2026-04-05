@@ -28,7 +28,6 @@
       moreutils
       neofetch
       nmap
-      openssh
       rainfrog
       ripgrep
       rsync
