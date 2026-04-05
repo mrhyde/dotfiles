@@ -66,6 +66,11 @@ zstyle ':completion:*:(ssh|scp|rdp):*:hosts' hosts
 # initialize Zsh. After this point console I/O is unavailable until Zsh
 # is fully initialized. Everything that requires user interaction or can
 # perform network I/O must be done above. Everything else is best done below.
+# Source nix daemon (needed on non-NixOS/non-darwin systems like WSL)
+if [[ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]]; then
+  . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+fi
+
 z4h init || return
 
 # Export environment variables.
@@ -135,4 +140,4 @@ setopt no_auto_menu  # require an extra TAB press to open the completion menu
 sudo /etc/init.d/dbus start &> /dev/null
 
 # Vite+ shell function & completions
-. "$HOME/.vite-plus/env"
+[[ -f "$HOME/.vite-plus/env" ]] && . "$HOME/.vite-plus/env"
