@@ -77,10 +77,11 @@ z4h init || return
 export GPG_TTY=$TTY
 export VOLTA_HOME="$HOME/.volta"
 export DENO_INSTALL="$HOME/.deno"
+export BUN_INSTALL="$HOME/.bun"
 export LIBVA_DRIVER_NAME=d3d12
 
 # Extend PATH.
-path=(~/bin $HOME/.local/bin $VOLTA_HOME/bin $DENO_INSTALL/bin $HOME/.cargo/bin $HOME/.vite-plus/bin $path)
+path=(~/bin $HOME/.local/bin $VOLTA_HOME/bin $DENO_INSTALL/bin $BUN_INSTALL/bin $HOME/.cargo/bin $HOME/.vite-plus/bin $path)
 
 # Source additional local files if they exist.
 z4h source ~/.env.zsh
@@ -141,3 +142,6 @@ sudo /etc/init.d/dbus start &> /dev/null
 
 # Vite+ shell function & completions
 [[ -f "$HOME/.vite-plus/env" ]] && . "$HOME/.vite-plus/env"
+
+# bun completions
+[ -s "/home/jason/.bun/_bun" ] && source "/home/jason/.bun/_bun"
