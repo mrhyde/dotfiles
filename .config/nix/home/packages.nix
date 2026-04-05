@@ -5,25 +5,33 @@
       # dev tools
       awscli2
       bat
+      bc
       cloc
       curl
+      dnsutils
       eza
       fd
+      figlet
       fzf
       gawk
       gh
       gnupg
+      graphicsmagick
       granted
       htop
       jc
       jq
+      k6
       lazydocker
       lazygit
+      lz4
       moreutils
       neofetch
+      nmap
       openssh
       rainfrog
       ripgrep
+      rsync
       ssm-session-manager-plugin
       tmux
       tree

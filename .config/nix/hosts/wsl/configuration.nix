@@ -18,6 +18,7 @@ in
       autoconf
       dos2unix
       nano
+      ngrok
       (wrapWithNixGL chromium "chromium")
       (wrapWithNixGL gitkraken "gitkraken")
     ];
