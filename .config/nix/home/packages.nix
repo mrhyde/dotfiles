@@ -39,6 +39,7 @@
       unzip
       wget
       zip
+      zerotierone
       zoxide
       zsh
 

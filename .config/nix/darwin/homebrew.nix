@@ -30,7 +30,6 @@
       "postman"
       "tableplus"
       "visual-studio-code@insiders"
-      "zerotier-one"
 
       # communication
       "microsoft-teams"

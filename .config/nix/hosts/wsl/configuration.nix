@@ -19,7 +19,6 @@ in
       dos2unix
       nano
       ngrok
-      zerotierone
       (wrapWithNixGL chromium "chromium")
       (wrapWithNixGL gitkraken "gitkraken")
     ];
