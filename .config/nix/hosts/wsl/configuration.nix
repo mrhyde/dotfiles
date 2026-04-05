@@ -24,5 +24,14 @@ in
     ];
   };
 
+  programs.git.settings = {
+    user = {
+      name = "Jason Hyde";
+      email = "github@2bad.me";
+      signingKey = "CC6148AB62E23917";
+    };
+    gpg.program = "/usr/bin/gpg";
+  };
+
   programs.home-manager.enable = true;
 }

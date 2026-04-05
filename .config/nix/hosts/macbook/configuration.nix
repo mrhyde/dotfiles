@@ -20,13 +20,18 @@
       nerd-fonts.meslo-lg
     ];
 
-    programs = {
-      zsh = {
-        initContent = ''
-          # Source shell functions
-          source ${./shell-functions.sh}
-        '';
+    programs.git.settings = {
+      user = {
+        name = "Jason Hyde";
+        email = "jason@xliberate.com";
+        signingKey = "1DD86A347604AEF6";
       };
+      gpg.program = "/etc/profiles/per-user/${primaryUser}/bin/gpg";
     };
+
+    programs.zsh.initContent = ''
+      # Source shell functions
+      source ${./shell-functions.sh}
+    '';
   };
 }
