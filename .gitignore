@@ -3,6 +3,7 @@
 .bash_sessions
 .bun
 .cache
+.cargo
 .CFUserTextEncoding
 .claude.json*
 .claude/*
@@ -13,6 +14,7 @@
 !.claude/plugins/known_marketplaces.json
 !.claude/settings.json
 .colima
+.config/.wrangler
 .config/asciinema
 .config/astro
 .config/cody-ai
@@ -62,11 +64,13 @@
 .pki
 .pulumi
 .quokka
+.rustup
 .ssh
 .sudo*
 .terminfo
 .terraform.d
 .Trash
+.vite-plus
 .volta
 .vscode*
 .wallaby
