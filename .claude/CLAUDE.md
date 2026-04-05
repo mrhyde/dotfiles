@@ -67,6 +67,7 @@
   - Run a CLI tool: `uvx tool` (not `pip install tool && tool`)
   - Add a dependency: `uv add package` (not `pip install package`)
   - Run in a project: `uv run` respects pyproject.toml automatically
+  - Look up package info: `uv pip show <package>` (not `pip show`)
 
 ## Writing & Communication
 - Do not use dashes, long dashes, or em dashes in written output unless absolutely necessary
@@ -75,3 +76,4 @@
 - Inline comments for complex logic only
 - API documentation (auto-generated where possible)
 - Update docs with code changes
+- When asked to "add/update documentation", update user-facing files (docs/, README, ADRs, etc.) — NOT CLAUDE.md. CLAUDE.md is only updated when explicitly asked.
