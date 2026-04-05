@@ -77,8 +77,7 @@
     "typescript-lsp@claude-plugins-official": false,
     "code-simplifier@claude-plugins-official": true,
     "claude-md-management@claude-plugins-official": true,
-    "claude-code-setup@claude-plugins-official": true,
-    "remember@claude-plugins-official": true
+    "claude-code-setup@claude-plugins-official": true
   },
   "syntaxHighlightingDisabled": true,
   "effortLevel": "high",
