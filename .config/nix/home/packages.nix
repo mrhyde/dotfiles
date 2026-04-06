@@ -31,6 +31,7 @@
       rainfrog
       ripgrep
       rsync
+      sshfs
       ssm-session-manager-plugin
       tmux
       tree
