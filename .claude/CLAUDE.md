@@ -35,7 +35,7 @@
 - Test error cases, not just happy paths
 
 ## Git & Version Control
-- Meaningful commit messages (imperative mood, all lowercase, NO Conventional Commits prefixes like "fix:", "feat:")
+- Meaningful commit messages (imperative mood, all lowercase, NO Conventional Commits prefixes like "fix:", "feat:"); single subject line only, no body/description unless explicitly asked
 - Small, focused commits
 - Feature branches, PR reviews before merge
 - Squash commits before merging to main
