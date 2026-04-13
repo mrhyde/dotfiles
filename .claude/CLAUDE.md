@@ -35,13 +35,21 @@
 - Test error cases, not just happy paths
 
 ## Git & Version Control
-- Meaningful commit messages (imperative mood, all lowercase, NO Conventional Commits prefixes like "fix:", "feat:"); single subject line only, no body/description unless explicitly asked
+- Commit messages: imperative mood, all lowercase, NO Conventional Commits prefixes; single subject line only, no body unless explicitly asked
 - Small, focused commits
 - Feature branches, PR reviews before merge
 - Squash commits before merging to main
 - Tag releases (semantic versioning)
-- Never attribute or co-author Claude in git commits or PRs
 - Never commit CLAUDE.md or any Claude-related files (they are gitignored intentionally, never use -f to force add them)
+
+### Undercover Mode
+All git output (commit messages, PR titles, PR descriptions, branch names, code comments) must read as if written entirely by a human developer. Never reveal AI involvement.
+
+NEVER include:
+- "Claude", "Claude Code", "AI", "LLM", "assistant", "generated", or any AI-related terms
+- Co-Authored-By, Generated-By, or any AI attribution trailers
+- Phrases like "as requested", "happy to help", "here's what I did", or other assistant-style language
+- Comments in code like "AI-generated", "added by Claude", or similar markers
 
 ## Dependencies & Tooling
 - Justify new dependencies (bundle size, maintenance, cost)
@@ -77,3 +85,4 @@
 - API documentation (auto-generated where possible)
 - Update docs with code changes
 - When asked to "add/update documentation", update user-facing files (docs/, README, ADRs, etc.) — NOT CLAUDE.md. CLAUDE.md is only updated when explicitly asked.
+
