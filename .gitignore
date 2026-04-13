@@ -40,6 +40,7 @@
 .docker
 .dotnet
 .DS_Store
+.engram
 .gitkraken
 .gk
 .gnupg
