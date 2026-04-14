@@ -1,6 +1,6 @@
 ---
 name: engram
-description: This skill should be used when the user asks to "run an engram eval", "score an experiment", "compare experiments", "set a baseline", "estimate cost", "scaffold an engram project", "add a runner", "add a scorer", "explain results", "suggest improvements", or mentions engram concepts like workflows, implementations, runners, datasets, scorers, experiments, or baselines. Covers the engram CLI, the workflow/implementation/runner/dataset/scorer data model, the run-score-compare pipeline, LLM-powered analysis, and project layout.
+description: This skill should be used when the user asks to "run an engram eval", "score an experiment", "compare experiments", "set a baseline", "estimate cost", "scaffold an engram project", "add a runner", "add a scorer", "add a transform", "reshape inputs or outputs per implementation", "explain results", "suggest improvements", or mentions engram concepts like workflows, implementations, runners, datasets, scorers, transforms, experiments, or baselines. Covers the engram CLI, the workflow/implementation/runner/transform/dataset/scorer data model, the run-score-compare pipeline, LLM-powered analysis, and project layout.
 type: reference
 ---
 
@@ -21,6 +21,7 @@ Five abstractions, each with a fixed home in the project tree:
 - **Runner** — platform adapter invoked by name from `implementation.yaml` (`anthropic`, `anthropic-agent`, `openai`, `dynamiq`). Runners are registered in `engram/runners/registry.py`.
 - **Dataset** (`datasets/<name>/`) — inputs + optionally partial labels. Inputs can be text files, images (JPEG, PNG, GIF, WebP), or PDFs. Labels can be partial: unlabeled fields are skipped at scoring time, never counted as errors.
 - **Scorer** — pure function comparing predicted vs. expected for one field. Built-ins: `exact_match`, `fuzzy_match`, `set_match`, `contains`, `contains_all`, `contains_any`, `numeric_tolerance`. Projects can declare custom scorers by Python path in `workflow.yaml`.
+- **Transform** (optional, per-implementation) — Python callables that reshape `InputData` before the runner sees it and/or reshape the runner's output dict before scoring. Declared on the implementation, loaded from `implementations/<name>/transforms.py`. Lets one dataset feed multiple platforms whose inputs or outputs differ in shape without forking the dataset (forking would split experiment refs and block comparison).
 
 An **Experiment** is one (implementation, dataset) run. Each experiment gets a monotonic short ID (`#1`, `#2`, ...) for user-facing reference. Raw results, a frozen `ConfigSnapshot`, and (after scoring) an `eval.json` are written under `experiments/{experiment-id}/`. A one-line summary is appended to `experiments/experiments.jsonl` — that file is the queryable index of all runs.
 
@@ -116,8 +117,9 @@ my-project/
 │       └── scorers.py             # optional custom scorers
 ├── implementations/
 │   ├── classify-anthropic/
-│   │   ├── implementation.yaml     # platform, runner, model, runner_config
-│   │   └── prompts/system.md
+│   │   ├── implementation.yaml     # platform, runner, model, runner_config, optional transform
+│   │   ├── prompts/system.md
+│   │   └── transforms.py          # optional: input/output reshape callables
 │   └── classify-openai/
 │       └── ...
 ├── datasets/
@@ -173,6 +175,31 @@ Defaults and traps:
 - Before launching workers, the run command preflights `required_env_vars(impl_config)` and fails fast with a friendly message if any are missing. Keep keys in the project `.env` — it's loaded automatically from the project root.
 
 Adding a new platform: implement the `Runner` ABC in `engram/runners/base.py` (`trigger`, `snapshot_config`, optional `estimate_cost`) and register it in `_RUNNERS` in `engram/runners/registry.py`. The `trigger` method receives an `InputData` object that may be text or binary.
+
+## Transforms: per-implementation input/output reshaping
+
+Transforms solve the case where one canonical dataset has to feed multiple implementations whose platforms expect different input shapes or emit different output shapes. Without transforms the workaround is to fork the dataset, which splits experiment ids and breaks `compare`. Declare transforms on the implementation, and the canonical dataset stays shared.
+
+```yaml
+# implementations/<name>/implementation.yaml
+transform:
+  input: transforms.shape_input     # optional
+  output: transforms.shape_output   # optional
+```
+
+Both entries are `module.function` paths resolved relative to the implementation directory (so the file above is `implementations/<name>/transforms.py`). Both are independently optional.
+
+Signatures (kept deliberately narrow):
+
+- **`input(inp: InputData) -> InputData`** — runs before `runner.trigger`. Return a new `InputData` (use `dataclasses.replace` — see `engram/models/input.py`). The original `filename` is what ends up on the `RunResult`, regardless of what the transform does; `result.input_file` is set from the pre-transform input.
+- **`output(output: dict) -> dict`** — runs after `runner.trigger` on `result.output`. Used to normalize platform quirks back into the workflow's canonical schema so scorers see consistent fields across implementations.
+
+Traps and guarantees:
+
+- **Output transform only runs on `status == 'succeeded'`.** Failed runner calls reach scoring with their empty output intact — don't rely on the output transform to populate error payloads.
+- **Transform exceptions are caught by the run loop** and marked as failed results (same path as runner exceptions), so a buggy transform won't crash the eval.
+- **Snapshot records both refs** in `ConfigSnapshot.transform`, and `engram compare` surfaces transform drift between two experiments — including when only one side has a transform. Cross-impl comparisons stay honest.
+- **Platform wire-format quirks stay in the runner, not the transform.** Example: Dynamiq's `{"output": {"output": {...}}}` unwrap lives in `runners/dynamiq.py`. Transforms are for implementation-level semantic reshaping, not per-platform protocol stripping.
 
 ## Scoring and repeat-aware metrics
 
