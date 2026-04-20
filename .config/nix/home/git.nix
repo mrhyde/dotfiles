@@ -13,6 +13,6 @@ _: {
       init.defaultBranch = "master";
     };
 
-    ignores = ["**/.DS_STORE" "**/CLAUDE.md" "**/.claude/settings.local.json" "**/.claude/skills/*" "**/.oxfmtrc.json"];
+    ignores = ["**/.DS_STORE" "**/CLAUDE.md" "**/.claude/settings.local.json" "**/.claude/skills/*"];
   };
 }
