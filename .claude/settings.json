@@ -55,6 +55,11 @@
           {
             "type": "command",
             "command": "if echo \"$CLAUDE_TOOL_INPUT\" | grep -qiE '\\b(python[0-9]*|pip[0-9]*)\\b'; then echo 'BLOCKED: Never use python/pip directly. Use uv run, uvx, or uv add instead. See CLAUDE.md for examples.'; exit 2; fi"
+          },
+          {
+            "type": "command",
+            "command": "/home/jason/.claude/hooks/git-md-check.sh",
+            "if": "Bash(git *)"
           }
         ]
       }
