@@ -16,6 +16,7 @@
 - Max line length: 120 characters
 - No dead code, no commented-out code, no "just in case" parameters or config
 - Don't add types, interfaces, or enums unless they are used in more than one place
+- No comment section separators; split the file or extract a function instead
 
 ## Architecture
 - Isolate external dependencies behind interfaces/wrappers to minimize coupling
@@ -79,6 +80,7 @@ NEVER include:
 
 ## Writing & Communication
 - Do not use dashes, long dashes, or em dashes in written output unless absolutely necessary
+- Never use fancy unicode symbols (box-drawing, em/en dashes, curly quotes, arrows, bullets like `•`) anywhere — code, comments, prose, commits, docs. Stick to ASCII
 
 ## Documentation
 - Inline comments for complex logic only

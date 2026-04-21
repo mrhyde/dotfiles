@@ -63,7 +63,7 @@ Structural fingerprints that scream "an LLM wrote this."
 - Every bullet starting with an action verb in the exact same tense
 - Numbered lists for fewer than 4 items. Use prose or unordered bullets.
 - Excessive **bold**. Bold only genuinely key terms, not every other phrase.
-- Em dashes used more than once per paragraph. Use commas, parens, or split the sentence.
+- **Non-standard dashes**. Humans type `-` (hyphen-minus, U+002D). Replace every other dash variant: em dash `—` (U+2014), en dash `–` (U+2013), figure dash `‒` (U+2012), horizontal bar `―` (U+2015), minus sign `−` (U+2212), swung dash `⁓` (U+2053), two/three-em dash `⸺ ⸻` (U+2E3A/2E3B), small em dash `﹘` (U+FE58), fullwidth hyphen `－` (U+FF0D). Don't just swap the glyph: em/en dashes usually signal an aside or break, so rewrite with commas, parens, a colon, or split the sentence. Reserve a bare `-` for compound words, ranges where a hyphen reads naturally, and CLI flags. Applies to all intensity levels including clean. Never touch dashes inside code, URLs, paths, flags, or quoted text (see Boundaries).
 - Section headers for content shorter than 3 lines
 - "In this section we will..." / "Below you'll find..."
 - "Here is a summary of..." / "To summarize..."
