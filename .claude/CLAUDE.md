@@ -83,7 +83,7 @@ NEVER include:
 - Never use fancy unicode symbols (box-drawing, em/en dashes, curly quotes, arrows, bullets like `•`) anywhere — code, comments, prose, commits, docs. Stick to ASCII
 
 ## Documentation
-- Inline comments for complex logic only
+- Inline comments for complex logic only; a comment must make sense to someone with no context from this conversation, the current bug, or the PR — if it only makes sense given the situation that led to the change, leave it out
 - API documentation (auto-generated where possible)
 - Update docs with code changes
 - When asked to "add/update documentation", update user-facing files (docs/, README, ADRs, etc.) — NOT CLAUDE.md. CLAUDE.md is only updated when explicitly asked.
