@@ -42,6 +42,7 @@
 - Squash commits before merging to main
 - Tag releases (semantic versioning)
 - Never commit CLAUDE.md or any Claude-related files (they are gitignored intentionally, never use -f to force add them)
+- NEVER take any git action (stage, unstage, commit, push, reset, branch, etc.) unless the user explicitly asked for that specific action in the current task. Inferred intent is not permission.
 
 ### Undercover Mode
 All git output (commit messages, PR titles, PR descriptions, branch names, code comments) must read as if written entirely by a human developer. Never reveal AI involvement.
