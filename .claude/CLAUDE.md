@@ -85,6 +85,8 @@ NEVER include:
 
 ## Documentation
 - Inline comments for complex logic only; a comment must make sense to someone with no context from this conversation, the current bug, or the PR — if it only makes sense given the situation that led to the change, leave it out
+- When editing code, leave comments alone unless the edit makes an existing one factually wrong
+- Never write or expand a comment that only makes sense if you saw the old code or the diff ("instead of...", "now...", "changed to...")
 - API documentation (auto-generated where possible)
 - Update docs with code changes
 - When asked to "add/update documentation", update user-facing files (docs/, README, ADRs, etc.) — NOT CLAUDE.md. CLAUDE.md is only updated when explicitly asked.
