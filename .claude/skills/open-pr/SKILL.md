@@ -32,11 +32,11 @@ Plain prose, scaled to the change: 1-2 sentences for a small or mechanical chang
 Hard rules:
 
 - Never describe the diff file by file or restate what the code visibly does; the reviewer has the diff. The body carries only what the diff cannot say: intent, symptom, evidence, ops notes.
+- No decision log. Leave out alternatives you weighed, why you picked one, why a value was set the way it was, and what you deliberately skipped, deferred, or held back. Explaining why the diff looks the way it does is the same mistake.
 - No markdown headers, no bold section labels, no "Summary" / "Changes" / "Test plan" scaffolding.
 - Bullets only when listing 3+ genuinely parallel items; prefer prose.
 - Dry and to the point. No filler words or AI-voice vocabulary ("comprehensive", "robust", "seamless", "enhance", "leverage", "streamline", "ensure"). If the deslop skill is available, apply its dev-level rules to the draft before submitting.
-- Written for reviewers: they care about behavior and code changes, not how the change was developed or which tools were involved.
-- Test evidence is one trailing sentence at most (`58 tests pass, type-check and lint clean`), and only when tests were actually run.
+- Written for reviewers: they care about behavior and code changes, not how the change was developed, which tools were involved, or what you had to work through to get there.
 - Before submitting, reread the draft and cut anything the reviewer does not need. If it is over the cap, it is wrong; shorten it.
 
 Example for a small change:
