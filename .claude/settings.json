@@ -15,7 +15,6 @@
       "Bash(gh *)",
       "Bash(git *)",
       "Bash(git commit:*)",
-      "Bash(mosaic *)",
       "Bash(npm *)",
       "Bash(npx *)",
       "Bash(pnpm *)",
@@ -27,7 +26,6 @@
       "Bash(ty *)",
       "Bash(uv *)",
       "Bash(uvx *)",
-      "Skill(code-review:code-review)",
       "WebFetch(domain:github.com)",
       "WebSearch"
     ],
@@ -47,6 +45,7 @@
     ],
     "defaultMode": "auto"
   },
+  "model": "opus[1m]",
   "hooks": {
     "PreToolUse": [
       {
@@ -75,15 +74,6 @@
         ]
       }
     ]
-  },
-  "enabledPlugins": {
-    "feature-dev@claude-plugins-official": true,
-    "commit-commands@claude-plugins-official": true,
-    "security-guidance@claude-plugins-official": true,
-    "typescript-lsp@claude-plugins-official": false,
-    "code-simplifier@claude-plugins-official": true,
-    "claude-md-management@claude-plugins-official": true,
-    "claude-code-setup@claude-plugins-official": true
   },
   "syntaxHighlightingDisabled": true,
   "effortLevel": "high",
