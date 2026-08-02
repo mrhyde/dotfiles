@@ -88,8 +88,9 @@ Human markers that real developers actually use in writing.
 The skill auto-detects what kind of text it's rewriting and adjusts.
 
 **Commit message:**
-Strip to bare minimum. Imperative mood. No "This commit..." or "Changes include..."
-Body only when the diff doesn't explain the why. One line is usually enough.
+Strip to bare minimum. Imperative mood, all lowercase, no Conventional Commits prefix.
+Subject line only. No "This commit..." or "Changes include..."
+No body unless the user asked for one.
 
 **PR description:**
 Short summary up top, not a wall of text. Bullet the changes, don't narrate them.
@@ -97,8 +98,9 @@ Skip "## Summary" headers for short PRs. Just write the thing.
 Test plan can be terse: "tested locally, added unit test for the edge case"
 
 **Code comment:**
-One line when one line is enough.
-No "This function is responsible for..." Just say what it does.
+Default to deleting it. A comment that restates what the code does, or justifies why the code
+looks the way it does, goes away no matter how well it's written.
+Keep only a non-obvious why: a workaround, a spec quirk, a subtle invariant. Then make it one line.
 `// TODO:` and `// HACK:` and `// NOTE:` are fine.
 
 **README / docs:**
@@ -126,9 +128,9 @@ Input:
 
 > feat: Implement comprehensive user authentication flow with robust token management and seamless session handling
 
-- clean: `feat: add user auth flow with token management and session handling`
-- dev: `feat: add user auth with token refresh and sessions`
-- raw: `feat: auth flow + token refresh`
+- clean: `add user auth flow with token management and session handling`
+- dev: `add user auth with token refresh and sessions`
+- raw: `auth flow + token refresh`
 
 ### PR description
 
@@ -180,9 +182,16 @@ Input:
 > // by checking its expiration date and ensuring it hasn't been revoked.
 > // It leverages the token store to perform comprehensive validation.
 
-- clean: `// Validates the auth token: checks expiration and revocation status.`
-- dev: `// check if token is expired or revoked`
-- raw: `// validate token (expiry + revocation)`
+Every level: delete it. `validateToken` already says this.
+
+Input that survives, because the why isn't visible in the code:
+
+> // The token store answers 200 with an empty body for revoked tokens, so an
+> // empty response has to count as a revocation rather than a cache miss.
+
+- clean: `// Revoked tokens come back as 200 with an empty body, so empty means revoked, not missing.`
+- dev: `// revoked tokens come back 200 + empty body, so empty means revoked`
+- raw: `// empty 200 from the store means revoked, not missing`
 
 ### README opener
 

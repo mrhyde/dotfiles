@@ -84,7 +84,10 @@ NEVER include:
 - Never use fancy unicode symbols (box-drawing, em/en dashes, curly quotes, arrows, bullets like `•`) anywhere — code, comments, prose, commits, docs. Stick to ASCII
 
 ## Documentation
-- Inline comments for complex logic only; a comment must make sense to someone with no context from this conversation, the current bug, or the PR — if it only makes sense given the situation that led to the change, leave it out
+- Default to no comment. Code is the source of truth; comments drift and end up lying. Prefer a better name or an extracted function. If deleting a comment loses nothing, don't write it
+- Don't restate what the code says
+- Don't justify decisions in comments (alternatives, why this way, what it guards against). That goes in the commit or the PR
+- Inline comments for genuinely complex logic only; a comment must make sense to someone with no context from this conversation, the current bug, or the PR — if it only makes sense given the situation that led to the change, leave it out
 - When editing code, leave comments alone unless the edit makes an existing one factually wrong
 - Never write or expand a comment that only makes sense if you saw the old code or the diff ("instead of...", "now...", "changed to...")
 - API documentation (auto-generated where possible)
