@@ -52,6 +52,43 @@ LLM vocabulary is the biggest tell. Swap it.
 | feel free to ask            | (drop, or "lmk if you have questions") |
 | key takeaway                | (drop, or "main thing")                |
 
+Claude-isms. A second layer of tells: words real developers rarely use but Claude reaches for constantly (measured from actual session transcripts).
+
+| Kill                              | Use instead                     |
+| --------------------------------- | ------------------------------- |
+| baked in, bake into               | hardcoded, built in             |
+| lands, landed (a change)          | merged, committed               |
+| surface (as a verb)               | show, report, find              |
+| verbatim                          | word for word, unchanged        |
+| caveat                            | note, but, one thing            |
+| untouched                         | unchanged                       |
+| settled                           | done, stable                    |
+| survives, surviving               | remains, still there            |
+| honors, honoring                  | follows, uses                   |
+| clobber                           | overwrite                       |
+| hand-rolled                       | custom, written from scratch    |
+| stray (a stray X)                 | leftover, accidental            |
+| spurious                          | false, bogus                    |
+| canonical, authoritative          | standard, the main one          |
+| load-bearing                      | important, relied on            |
+| corroborate                       | confirm                         |
+| guardrail                         | check, limit                    |
+| vestigial                         | unused, dead                    |
+| stopgap                           | temporary fix                   |
+| masquerading as                   | pretending to be, looks like    |
+| pare back, pared down             | cut, trimmed                    |
+| wire up, wired into               | connect, hook up                |
+| plumb, plumbing (data through)    | pass through                    |
+| anchor, anchored                  | based on, tied to               |
+| the full picture                  | everything, the whole story     |
+| checks out                        | looks right, passes             |
+| footgun, escape hatch, smoking gun| say the thing plainly           |
+| silently, deliberately, genuinely, cleanly, notably, crucially | (drop) |
+
+Physical metaphors for code changes are the deepest tell: code that lands, ships, leaks, drifts, surfaces, gets wired, plumbed, or baked in. Don't swap one metaphor for another; use the literal verb.
+
+Metaphor sense is slop, literal technical sense is fine: gate (a real CI/feature gate stays; "gated behind" goes), leak (memory/PII leak stays; "leak into a commit" goes), drift (clock/config drift stays; "the docs drifted" goes), stale (caches/locks stay; "stale comment" goes), shadow (variable shadowing stays), flag (CLI/feature flags stay; "worth flagging" goes), orphaned (processes/branches stay). Normal developer vocabulary stays too: hardcoded, root cause, edge case, no-op, invariant, blocker, mismatch, race condition, end-to-end.
+
 ### Drop
 
 Structural fingerprints that scream "an LLM wrote this."
@@ -59,6 +96,7 @@ Structural fingerprints that scream "an LLM wrote this."
 - Opening paragraph that restates the user's question back to them
 - Closing paragraph that summarizes everything you just said
 - "Let me explain..." / "Let me walk you through..." openers
+- "Let me..." action narration: "let me verify", "let me check", "let me confirm", "let me read", "let me pull up". By far the highest-frequency tell in measured transcripts (1 in 4 messages). Cut the opener and state the finding, or use a bare progressive ("checking the config") if a status line is needed
 - Forced parallel construction on every list item (real lists are messy)
 - Every bullet starting with an action verb in the exact same tense
 - Numbered lists for fewer than 4 items. Use prose or unordered bullets.
@@ -68,6 +106,9 @@ Structural fingerprints that scream "an LLM wrote this."
 - "In this section we will..." / "Below you'll find..."
 - "Here is a summary of..." / "To summarize..."
 - Emoji used as bullet points or section markers (unless the original had them)
+- Assistant closing offers: "say the word and I'll...", "just say the word", "want me to...?", "happy to...", "if you want I can...", "if you'd rather...". State what's done and stop. A casual "lmk" in chat is fine; the standing offer to do more work is the tell.
+- "Worth" constructions: "worth noting", "worth checking", "worth flagging", "one thing worth mentioning", "two things worth calling out". State the thing directly.
+- Self-confirming echoes: "which is exactly what we wanted", "which is exactly the behavior we expected". Delete the clause; the result already speaks.
 
 ### Add
 

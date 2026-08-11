@@ -1,6 +1,7 @@
 # Claude Instructions
 
 ## General Principles
+
 - Focus on business impact, build what moves key metrics
 - Choose boring, proven solutions over novel ones (unless novel solves a real problem better)
 - Scope appropriately: build for known requirements, design for likely evolution
@@ -9,6 +10,7 @@
 - Measure what matters (user impact, revenue, costs), not vanity metrics
 
 ## Code Style & Formatting
+
 - Use oxfmt for formatting (not Prettier, not Biome); configure via `.oxfmtrc.json`
 - Single quotes, 2-space indentation for TypeScript/JavaScript
 - Descriptive variable names (avoid single letters except loop counters)
@@ -19,6 +21,7 @@
 - No comment section separators; split the file or extract a function instead
 
 ## Architecture
+
 - Isolate external dependencies behind interfaces/wrappers to minimize coupling
 - Choose patterns appropriate for the problem complexity (don't over-abstract)
 - No wrapper functions that just call another function, no "utils" or "helpers" files that become junk drawers
@@ -26,16 +29,19 @@
 - If a file, function, or abstraction layer doesn't justify its existence, delete it
 
 ## Error Handling & Logging
+
 - Structured logging (JSON format preferred)
 - Log errors with context (user ID, request ID, etc.)
 - Don't expose internal errors to API consumers
 
 ## Testing
+
 - Mock external dependencies in tests, not internal modules
 - Aim for >80% coverage on critical paths
 - Test error cases, not just happy paths
 
 ## Git & Version Control
+
 - Commit messages: imperative mood, all lowercase, NO Conventional Commits prefixes; single subject line only, no body unless explicitly asked
 - Small, focused commits
 - Feature branches, PR reviews before merge
@@ -45,15 +51,18 @@
 - NEVER take any git action (stage, unstage, commit, push, reset, branch, etc.) unless the user explicitly asked for that specific action in the current task. Inferred intent is not permission.
 
 ### Undercover Mode
+
 All git output (commit messages, PR titles, PR descriptions, branch names, code comments) must read as if written entirely by a human developer. Never reveal AI involvement.
 
 NEVER include:
+
 - "Claude", "Claude Code", "AI", "LLM", "assistant", "generated", or any AI-related terms
 - Co-Authored-By, Generated-By, or any AI attribution trailers
 - Phrases like "as requested", "happy to help", "here's what I did", or other assistant-style language
 - Comments in code like "AI-generated", "added by Claude", or similar markers
 
 ## Dependencies & Tooling
+
 - Justify new dependencies (bundle size, maintenance, cost)
 - Pin versions in package.json
 - Prefer widely-adopted, maintained libraries
@@ -61,6 +70,7 @@ NEVER include:
 - Use `npm view <package>` to look up the latest package version instead of web search
 
 ### TypeScript / JavaScript
+
 - Always target the latest stable TypeScript version
 - **Linting**: oxlint (not ESLint, not Biome); configure via `oxlint.config.ts`
 - **Formatting**: oxfmt (not Prettier, not Biome); configure via `.oxfmtrc.json`
@@ -71,6 +81,7 @@ NEVER include:
 - **Package manager**: pnpm (not npm, not yarn, not Turbopack)
 
 ### Python
+
 - NEVER use python, python3, pip, or pip3 directly. Always use uv/uvx:
   - Run a script: `uv run script.py` (not `python script.py`)
   - Run with deps: `uv run --with package script.py` (not `pip install package && python script.py`)
@@ -80,10 +91,25 @@ NEVER include:
   - Look up package info: `uv pip show <package>` (not `pip show`)
 
 ## Writing & Communication
+
 - Do not use dashes, long dashes, or em dashes in written output unless absolutely necessary
 - Never use fancy unicode symbols (box-drawing, em/en dashes, curly quotes, arrows, bullets like `•`) anywhere — code, comments, prose, commits, docs. Stick to ASCII
 
+### Banned AI vocabulary
+
+Applies to everything you write: chat responses, commits, PRs, docs, code comments.
+
+- Describe changes with plain literal verbs (merged, added, removed, connected, cut, showed). No physical metaphors for code: nothing lands, ships, surfaces, leaks, drifts, gets wired, plumbed, baked in, pared back, anchored, or clobbered. Do not substitute a fresh metaphor for a banned one; use the literal verb
+- No "let me..." narration ("let me verify", "let me check", "let me read", "let me confirm"). Just do the thing; if a status note is needed, state the fact ("checking the config" not "let me check the config")
+- No "worth" constructions ("worth noting", "worth checking", "one thing worth mentioning", "two things worth flagging"). State the thing directly
+- No self-confirming echoes ("which is exactly what we wanted", "which is exactly the behavior")
+- Banned words, with replacements: baked in (hardcoded), verbatim (word for word, unchanged), caveat (note, but), untouched (unchanged), settled (done), survives (remains), honors (follows), clobber (overwrite), hand-rolled (custom), stray (leftover, accidental), spurious (false), canonical (standard), load-bearing (important, relied on), corroborate (confirm), guardrail (check, limit), vestigial (unused), stopgap (temporary), masquerading (pretending to be), footgun, escape hatch, smoking gun, the full picture, checks out
+- Banned filler adverbs, drop them: silently, deliberately, intentionally, genuinely, cleanly, notably, crucially
+- Metaphor sense banned, literal technical sense fine: gate (a real CI/feature gate is fine; "gated behind" is not), leak (memory/PII leaks are fine; "leak into a commit" is not), drift (clock/config drift is fine; "the docs drifted" is not), stale (caches/locks are fine; "stale comment" is not), shadow (variable shadowing is fine), flag (CLI/feature flags are fine; "worth flagging" is not), orphaned (processes/branches are fine)
+- Normal developer vocabulary stays: hardcoded, root cause, edge case, no-op, invariant, blocker, mismatch, race condition, end-to-end
+
 ## Documentation
+
 - Default to no comment. Code is the source of truth; comments drift and end up lying. Prefer a better name or an extracted function. If deleting a comment loses nothing, don't write it
 - Don't restate what the code says
 - Don't justify decisions in comments (alternatives, why this way, what it guards against). That goes in the commit or the PR
@@ -93,4 +119,3 @@ NEVER include:
 - API documentation (auto-generated where possible)
 - Update docs with code changes
 - When asked to "add/update documentation", update user-facing files (docs/, README, ADRs, etc.) — NOT CLAUDE.md. CLAUDE.md is only updated when explicitly asked.
-
