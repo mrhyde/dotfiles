@@ -23,8 +23,8 @@
     programs.git.settings = {
       user = {
         name = "Jason Hyde";
-        email = "jason@xliberate.com";
-        signingKey = "1DD86A347604AEF6";
+        email = "github@2bad.me";
+        signingKey = "31D6485A899EE1DE7AFD333FAC2E09DC81CD97DB";
       };
       gpg.program = "/etc/profiles/per-user/${primaryUser}/bin/gpg";
     };
