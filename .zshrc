@@ -85,6 +85,7 @@ path=(~/bin $HOME/.local/bin $VOLTA_HOME/bin $DENO_INSTALL/bin $BUN_INSTALL/bin 
 
 # Source additional local files if they exist.
 z4h source ~/.env.zsh
+z4h source ~/.functions.zsh
 
 # Use additional Git repositories pulled in with `z4h install`.
 #
