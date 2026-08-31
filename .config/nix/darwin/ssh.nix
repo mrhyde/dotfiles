@@ -15,6 +15,6 @@
   '';
 
   users.users.${primaryUser}.openssh.authorizedKeys.keys = [
-    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDM8PL6//9yTxZZaW4aYYuNW+WL2Lyz03pE12JGzR3K2 jason@macbook"
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIL+l1OAjY0VR2nfUQbzakDGE5A9MidlYjFLYup4ijuJ4 jason@macbook"
   ];
 }
