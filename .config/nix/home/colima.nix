@@ -1,11 +1,9 @@
-{ config, pkgs, ... }:
-
-{
+_: {
   launchd.agents.colima = {
     enable = true;
     config = {
       ProgramArguments = [
-        "${pkgs.colima}/bin/colima"
+        "/opt/homebrew/bin/colima"
         "start"
       ];
       RunAtLoad = true;
@@ -13,7 +11,7 @@
       StandardOutPath = "/tmp/colima.log";
       StandardErrorPath = "/tmp/colima.err";
       EnvironmentVariables = {
-        PATH = "${pkgs.docker}/bin:${pkgs.colima}/bin:/usr/bin:/bin";
+        PATH = "/opt/homebrew/bin:/usr/bin:/bin";
       };
     };
   };
