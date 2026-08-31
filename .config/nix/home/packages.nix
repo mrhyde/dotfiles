@@ -10,6 +10,7 @@
       curl
       dnsutils
       eza
+      fastfetch
       fd
       figlet
       fzf
@@ -26,7 +27,6 @@
       lazygit
       lz4
       moreutils
-      neofetch
       nmap
       rainfrog
       ripgrep
