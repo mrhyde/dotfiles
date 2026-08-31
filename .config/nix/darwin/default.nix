@@ -10,6 +10,7 @@
     ./homebrew.nix
     ./settings.nix
     ./ssh.nix
+    ./zerotier.nix
     inputs.home-manager.darwinModules.home-manager
     inputs.nix-homebrew.darwinModules.nix-homebrew
   ];
