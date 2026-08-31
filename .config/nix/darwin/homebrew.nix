@@ -9,7 +9,6 @@
       cleanup = "uninstall";
     };
 
-    caskArgs.no_quarantine = true;
     global.brewfile = true;
 
     # homebrew is best for GUI apps
@@ -21,21 +20,19 @@
       # "betterdisplay"
 
       # dev
-      "android-studio"
       "ghostty"
       "gitkraken"
       "http-toolkit"
       "mitmproxy"
       "ngrok"
-      "postman"
       "tableplus"
       "visual-studio-code@insiders"
       "zerotier-one"
 
       # communication
-      "microsoft-teams"
+      # "microsoft-teams"
       "slack"
-      "zoom"
+      # "zoom"
 
       # other
       "claude"
@@ -53,7 +50,10 @@
       "colima"
     ];
     taps = [
-      "lihaoyun6/tap"
+      {
+        name = "lihaoyun6/tap";
+        trusted = true;
+      }
     ];
   };
 }
