@@ -1,7 +1,11 @@
-{ self, ... }:
+{ self, primaryUser, ... }:
 {
   # touch ID for sudo
   security.pam.services.sudo_local.touchIdAuth = true;
+
+  security.sudo.extraConfig = ''
+    ${primaryUser} ALL=(ALL) NOPASSWD: ALL
+  '';
 
   # system defaults and preferences
   system = {
@@ -9,6 +13,10 @@
     configurationRevision = self.rev or self.dirtyRev or null;
 
     startup.chime = false;
+
+    activationScripts.postActivation.text = ''
+      pmset -a displaysleep 15 sleep 30
+    '';
 
     defaults = {
       loginwindow = {
