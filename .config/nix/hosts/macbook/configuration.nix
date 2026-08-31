@@ -14,7 +14,6 @@
   # host-specific home-manager configuration
   home-manager.users.${primaryUser} = {
     home.packages = with pkgs; [
-      frida-tools
       nerd-fonts.fira-code
       nerd-fonts.fira-mono
       nerd-fonts.meslo-lg
@@ -28,10 +27,5 @@
       };
       gpg.program = "/etc/profiles/per-user/${primaryUser}/bin/gpg";
     };
-
-    programs.zsh.initContent = ''
-      # Source shell functions
-      source ${./shell-functions.sh}
-    '';
   };
 }
