@@ -58,7 +58,7 @@
           },
           {
             "type": "command",
-            "command": "/home/jason/.claude/hooks/git-md-check.sh",
+            "command": "$HOME/.claude/hooks/git-md-check.sh",
             "if": "Bash(git *)"
           }
         ]
