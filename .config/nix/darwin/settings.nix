@@ -24,6 +24,10 @@
         DisableConsoleAccess = true;
       };
 
+      dock = {
+        show-recents = false;
+      };
+
       finder = {
         AppleShowAllFiles = true; # hidden files
         AppleShowAllExtensions = true; # file extensions

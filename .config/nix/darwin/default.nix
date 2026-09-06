@@ -8,6 +8,7 @@
 {
   imports = [
     ./homebrew.nix
+    ./networking.nix
     ./settings.nix
     ./ssh.nix
     ./zerotier.nix
