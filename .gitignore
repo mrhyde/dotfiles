@@ -33,6 +33,7 @@
 .config/GitKraken
 .config/google-chrome
 .config/nats
+.config/nix/result
 .config/raycast
 .config/sst
 .config/uv
