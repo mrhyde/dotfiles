@@ -1,5 +1,5 @@
 /******
-*    name: customized version of arkenfox user.js
+*    name: arkenfox user.js
 *    date: 21 April 2026
 * version: 144
 *    urls: https://github.com/arkenfox/user.js [repo]
@@ -1261,6 +1261,9 @@ user_pref("network.predictor.enabled", false); // [DEFAULT: false FF144+]
 user_pref("network.predictor.enable-prefetch", false); // [FF48+] [DEFAULT: false]
 // ***/
 
+/* END: internal custom pref to test for syntax errors ***/
+user_pref("_user.js.parrot", "SUCCESS: No no he's not dead, he's, he's restin'!");
+
 /*** [SECTION 9900]: PERSONAL OVERRIDES ***/
 user_pref("_user.js.parrot", "9900 syntax error: the parrot's been overridden!");
 user_pref("browser.safebrowsing.downloads.remote.enabled", true);
@@ -1301,6 +1304,4 @@ user_pref("extensions.ui.locale.hidden", true);
 user_pref("findbar.highlightAll", true);
 user_pref("media.videocontrols.picture-in-picture.enabled", false);
 user_pref("media.videocontrols.picture-in-picture.video-toggle.enabled", false);
-
-/* END: internal custom pref to test for syntax errors ***/
-user_pref("_user.js.parrot", "SUCCESS: No no he's not dead, he's, he's restin'!");
+user_pref("_user.js.parrot", "SUCCESS: overrides applied");
