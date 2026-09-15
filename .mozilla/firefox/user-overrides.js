@@ -38,4 +38,5 @@ user_pref("extensions.ui.locale.hidden", true);
 user_pref("findbar.highlightAll", true);
 user_pref("media.videocontrols.picture-in-picture.enabled", false);
 user_pref("media.videocontrols.picture-in-picture.video-toggle.enabled", false);
+user_pref("browser.nova.enabled", false);
 user_pref("_user.js.parrot", "SUCCESS: overrides applied");
