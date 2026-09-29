@@ -7,6 +7,8 @@
     ./shell.nix
   ];
 
+  manual.manpages.enable = false;
+
   home = {
     username = primaryUser;
     stateVersion = "25.11";
