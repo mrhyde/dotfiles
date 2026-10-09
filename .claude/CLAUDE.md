@@ -38,6 +38,7 @@
 
 - Mock external dependencies in tests, not internal modules
 - Aim for >80% coverage on critical paths
+- When running evals, benchmark throughput first, then run the full payload in parallel at the measured concurrency
 - Test error cases, not just happy paths
 
 ## Git & Version Control
