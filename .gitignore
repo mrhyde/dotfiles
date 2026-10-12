@@ -19,6 +19,7 @@
 .config/asciinema
 .config/chromium
 .config/astro
+.config/BraveSoftware
 .config/cody-ai
 .config/Cody*
 .config/configstore/nodemon*
@@ -32,11 +33,14 @@
 .config/git
 .config/GitKraken
 .config/google-chrome
+.config/microsoft-edge
 .config/nats
 .config/nix/result
+.config/opera
 .config/raycast
 .config/sst
 .config/uv
+.config/vivaldi
 .deno
 .docker
 .dotnet
@@ -53,6 +57,7 @@
 .lesshst
 .local/bin
 .local/share/amp
+.local/share/applications/claude-code-url-handler.desktop
 .local/share/applications/mimeapps.list
 .local/share/claude/versions
 .local/share/direnv
@@ -60,6 +65,7 @@
 .local/share/pnpm
 .local/share/rainfrog
 .local/share/recently-used.xbel
+.local/share/vitest
 .local/share/vscode-beggar
 .local/state
 .mitmproxy
