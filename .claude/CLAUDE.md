@@ -49,6 +49,7 @@
 - Squash commits before merging to main
 - Tag releases (semantic versioning)
 - Never commit CLAUDE.md or any Claude-related files (they are gitignored intentionally, never use -f to force add them)
+- Never commit files in docs directories, and never reference them in any way in code (imports, comments, links, paths); they are private and confidential
 - NEVER take any git action (stage, unstage, commit, push, reset, branch, etc.) unless the user explicitly asked for that specific action in the current task. Inferred intent is not permission.
 
 ### Undercover Mode
