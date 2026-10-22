@@ -1,135 +1,288 @@
 ---
 name: deslop
 description: >
-  Rewrite text so a person understands it on the first read and it doesn't read as AI output.
-  Rewrites structure and sentences for the reader, not just banned words. Use when user says
-  "deslop this", "make it sound human", "remove AI voice", "too LLM", "sounds like AI",
-  "humanize this", "more human", or invokes /deslop.
+  De-LLMify text. Transforms AI-generated prose into text indistinguishable from
+  what a working developer would write. Strips vocabulary tells, structural tells,
+  and tone tells. Supports intensity levels: clean, dev (default), raw.
+  Use when user says "deslop this", "make it sound human", "remove AI voice",
+  "too LLM", "sounds like AI", "humanize this", "more human", or invokes /deslop.
 ---
 
-The text you get here was usually written under banned-word rules already. It has no "leverage" or "delve" in it, and a word checklist will find nothing. That doesn't make it clean. What's left is what people actually complain about:
+Strip the LLM off text. Output should read like a developer wrote it on the first try. Not polished. Not perfect. Not enthusiastic. Just normal.
 
-- They can't tell what it means on the first read. Sentences carry four facts joined by commas, "so", "and" and parentheses.
-- The main point or the reason is in the last clause instead of the first sentence.
-- It describes what the code does inside instead of what the reader sees or has to do. "Many devices answer the other connect calls without auth" is the code's point of view; a reader wants to know that a wrong password won't fail at connect.
-- Words the reader can't resolve: "later", "the other calls", "in a different form", "some cases", "the first real call".
-- Every fact the writer knew is in there, whether this reader needs it or not.
-- It's the same sentences in the same order with contractions added.
+## Persistence
 
-Never report text as "already clean" because nothing matched a word list. If the text has none of the problems above, say so in one line and change nothing.
+NOT a persistent mode. One-shot transform per invocation. User provides text (or points to a file, diff, PR), you rewrite it, done.
 
-## Process
+Default: **dev**. Switch: `/deslop clean|dev|raw`.
 
-1. Read all of the target. For a file, read the whole section, not a slice.
-2. Decide who reads it and what they need from it: someone deciding whether to turn an option off, an issue author who wants to know if their bug is fixed, a user scanning a changelog for what's new.
-3. List the points that reader needs, most important first. Drop what they don't need even if it's true: internal mechanics, exported constant names, how we got here.
-4. Check each point is true. Plain wording shows when a claim was vague. If you can't state it plainly without guessing, check the code, spec or source. Don't carry a fuzzy claim over in nicer words.
-5. Write it fresh from the points. Don't patch the old sentences. For a file, replace the whole paragraph or section in one edit, not a string of phrase-level edits.
-6. Reread it cold as that reader, without the code or this conversation. For each sentence: would they get it? Is any word vague? Would a developer say it out loud like that? Fix and reread.
-7. Run the word and structure lists at the end of this file.
+## Rules
 
-If the result differs from the input only by contractions and swapped words, go back to step 3.
+### Replace
 
-## How it should read
+LLM vocabulary is the biggest tell. Swap it.
 
-- Point first. What something is for, or why a change was made, goes in the first sentence.
-- One idea per sentence. Split sentences that chain facts with "and", "so", "which" or parentheses.
-- Concrete over vague: "on the first call that needs a login", not "later".
-- The reader's point of view: what they see, do or get. Internals only when the reader works on those internals.
-- Shorter by cutting points the reader doesn't need, not by squeezing. Three plain sentences beat one dense one.
-- Keep the register the destination needs. Announcements, READMEs, docs and issue replies stay plain and neutral. Casual isn't the same as human: don't add "tbh", "atm", "fwiw", "honestly", "couple of", "stuff", or short forms like "org", "repo", "deps" to make it sound relaxed. Chat and commit messages can be terse.
-- If it's the user's own draft, keep their voice, opinions and word choices. Fix only what's unclear or wrong.
+| Kill                        | Use instead                            |
+| --------------------------- | -------------------------------------- |
+| utilize, leverage           | use                                    |
+| implement, facilitate       | build, make, do                        |
+| ensure, verify              | check, make sure                       |
+| comprehensive               | full, or just drop it                  |
+| robust                      | solid, or drop it                      |
+| streamline                  | simplify, clean up                     |
+| enhance                     | improve, add to                        |
+| seamless                    | smooth, easy                           |
+| straightforward             | simple, easy                           |
+| delve, dive into            | dig into, look at                      |
+| multifaceted                | complex, or drop it                    |
+| nuanced                     | subtle, tricky                         |
+| holistic                    | overall, big picture                   |
+| optimal, optimized          | best, fastest, good enough             |
+| subsequently, additionally  | then, after that, also                 |
+| functionality               | feature, what it does                  |
+| methodology                 | approach, way                          |
+| in order to                 | to                                     |
+| it's worth noting that      | (drop. just state the thing)           |
+| it's important to mention   | (drop)                                 |
+| as mentioned earlier        | (drop, or "like I said")               |
+| Great question!             | (drop entirely)                        |
+| Absolutely! / Certainly!    | (drop, or "yeah")                      |
+| That's a fantastic approach | (drop, or "that works")                |
+| I hope this helps           | (drop)                                 |
+| feel free to ask            | (drop, or "lmk if you have questions") |
+| key takeaway                | (drop, or "main thing")                |
 
-## By destination
+Claude-isms. A second layer of tells: words real developers rarely use but Claude reaches for constantly (measured from actual session transcripts).
 
-**Code comment.** Delete it if it restates the code. Keep it only for a reason the code can't show. For an option or parameter: what it does, why it exists, what happens with each value.
+| Kill                              | Use instead                     |
+| --------------------------------- | ------------------------------- |
+| baked in, bake into               | hardcoded, built in             |
+| lands, landed (a change)          | merged, committed               |
+| surface (as a verb)               | show, report, find              |
+| verbatim                          | word for word, unchanged        |
+| caveat                            | note, but, one thing            |
+| untouched                         | unchanged                       |
+| settled                           | done, stable                    |
+| survives, surviving               | remains, still there            |
+| honors, honoring                  | follows, uses                   |
+| clobber                           | overwrite                       |
+| hand-rolled                       | custom, written from scratch    |
+| stray (a stray X)                 | leftover, accidental            |
+| spurious                          | false, bogus                    |
+| canonical, authoritative          | standard, the main one          |
+| load-bearing                      | important, relied on            |
+| corroborate                       | confirm                         |
+| guardrail                         | check, limit                    |
+| vestigial                         | unused, dead                    |
+| stopgap                           | temporary fix                   |
+| masquerading as                   | pretending to be, looks like    |
+| pare back, pared down             | cut, trimmed                    |
+| wire up, wired into               | connect, hook up                |
+| plumb, plumbing (data through)    | pass through                    |
+| anchor, anchored                  | based on, tied to               |
+| the full picture                  | everything, the whole story     |
+| checks out                        | looks right, passes             |
+| footgun, escape hatch, smoking gun| say the thing plainly           |
+| silently, deliberately, genuinely, cleanly, notably, crucially | (drop) |
 
-**Changelog.** One line per entry: what the user can now do, and the API name. Leave out formats, constants and internals unless the user acts on them.
+Physical metaphors for code changes are the deepest tell: code that lands, ships, leaks, drifts, surfaces, gets wired, plumbed, or baked in. Don't swap one metaphor for another; use the literal verb.
 
-**Issue or PR reply.** Answer first (fixed, won't do, here's how), then the reason in a sentence or two.
+Metaphor sense is slop, literal technical sense is fine: gate (a real CI/feature gate stays; "gated behind" goes), leak (memory/PII leak stays; "leak into a commit" goes), drift (clock/config drift stays; "the docs drifted" goes), stale (caches/locks stay; "stale comment" goes), shadow (variable shadowing stays), flag (CLI/feature flags stay; "worth flagging" goes), orphaned (processes/branches stay). Normal developer vocabulary stays too: hardcoded, root cause, edge case, no-op, invariant, blocker, mismatch, race condition, end-to-end.
 
-**README and docs.** What it does in the first sentence. Examples over explanation. No walls of text.
+### Drop
 
-**Commit message.** Lowercase imperative subject line, no prefix, no body unless asked.
+Structural fingerprints that scream "an LLM wrote this."
 
-**Chat.** Short. Fragments are fine.
+- Opening paragraph that restates the user's question back to them
+- Closing paragraph that summarizes everything you just said
+- "Let me explain..." / "Let me walk you through..." openers
+- "Let me..." action narration: "let me verify", "let me check", "let me confirm", "let me read", "let me pull up". By far the highest-frequency tell in measured transcripts (1 in 4 messages). Cut the opener and state the finding, or use a bare progressive ("checking the config") if a status line is needed
+- Forced parallel construction on every list item (real lists are messy)
+- Every bullet starting with an action verb in the exact same tense
+- Numbered lists for fewer than 4 items. Use prose or unordered bullets.
+- Excessive **bold**. Bold only genuinely key terms, not every other phrase.
+- **Non-standard dashes**. Humans type `-` (hyphen-minus, U+002D). Replace every other dash variant: em dash `—` (U+2014), en dash `–` (U+2013), figure dash `‒` (U+2012), horizontal bar `―` (U+2015), minus sign `−` (U+2212), swung dash `⁓` (U+2053), two/three-em dash `⸺ ⸻` (U+2E3A/2E3B), small em dash `﹘` (U+FE58), fullwidth hyphen `－` (U+FF0D). Don't just swap the glyph: em/en dashes usually signal an aside or break, so rewrite with commas, parens, a colon, or split the sentence. Reserve a bare `-` for compound words, ranges where a hyphen reads naturally, and CLI flags. Applies to all intensity levels including clean. Never touch dashes inside code, URLs, paths, flags, or quoted text (see Boundaries).
+- Section headers for content shorter than 3 lines
+- "In this section we will..." / "Below you'll find..."
+- "Here is a summary of..." / "To summarize..."
+- Emoji used as bullet points or section markers (unless the original had them)
+- Assistant closing offers: "say the word and I'll...", "just say the word", "want me to...?", "happy to...", "if you want I can...", "if you'd rather...". State what's done and stop. A casual "lmk" in chat is fine; the standing offer to do more work is the tell.
+- "Worth" constructions: "worth noting", "worth checking", "worth flagging", "one thing worth mentioning", "two things worth calling out". State the thing directly.
+- Self-confirming echoes: "which is exactly what we wanted", "which is exactly the behavior we expected". Delete the clause; the result already speaks.
+
+### Add
+
+Human markers that real developers actually use in writing.
+
+- **Contractions**: don't, won't, it's, can't, shouldn't, we're, they'll, that's, I'd, there's, hasn't, doesn't
+- **Dev abbreviations** where natural: config, repo, env, deps, auth, impl, fn, DB, API, CLI, PR, CI/CD, infra, k8s
+- **Casual connectors**: so, basically, anyway, also, plus, though, actually, honestly, fwiw, tbh
+- **Sentence fragments** where natural: "Works fine on Linux. Not so much on Windows."
+- **Conjunction starters**: But, And, So, Or at the start of sentences
+- **Parenthetical asides** (like this one)
+- **Uneven paragraph lengths**. Not every paragraph needs 3 sentences.
+- **Mixed punctuation in lists**. Some bullets end with periods, some don't. Real people are inconsistent.
+- **Short sentences mixed with longer ones.** Vary the rhythm. Don't write every sentence at the same length with the same structure.
+
+## Context
+
+The skill auto-detects what kind of text it's rewriting and adjusts.
+
+**Commit message:**
+Strip to bare minimum. Imperative mood, all lowercase, no Conventional Commits prefix.
+Subject line only. No "This commit..." or "Changes include..."
+No body unless the user asked for one.
+
+**PR description:**
+Short summary up top, not a wall of text. Bullet the changes, don't narrate them.
+Skip "## Summary" headers for short PRs. Just write the thing.
+Test plan can be terse: "tested locally, added unit test for the edge case"
+
+**Code comment:**
+Default to deleting it. A comment that restates what the code does, or justifies why the code
+looks the way it does, goes away no matter how well it's written.
+Keep only a non-obvious why: a workaround, a spec quirk, a subtle invariant. Then make it one line.
+`// TODO:` and `// HACK:` and `// NOTE:` are fine.
+
+**README / docs:**
+More structure is OK here but still cut the fluff.
+Don't open with "Welcome to..." or "This project is a comprehensive..."
+Get to what it does in sentence one. Examples > explanations.
+
+**Slack / chat / async message:**
+Short. Fragments OK. Lowercase OK. Can start mid-thought.
+Skip "I hope this message finds you well." Skip sign-offs unless it's formal.
+
+## Intensity
+
+| Level     | What changes                                                                                                                                                                          |
+| --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **clean** | Swap LLM vocabulary and tone. Keep structure, full sentences, formatting intact. Minimal intervention. Good for docs that need to stay professional but sound less robotic.           |
+| **dev**   | Full Replace + Drop + Add. Sounds like a working developer who writes clearly but doesn't obsess over polish. Contractions, fragments, casual connectors, uneven formatting. Default. |
+| **raw**   | Terse, fragments, heavy abbreviations, lowercase starts, dropped words. Sounds like a dev typing in Slack between meetings. Not sloppy, just fast.                                    |
 
 ## Examples
 
-### Option comment (reason buried, code's point of view, vague)
+### Commit message
 
-Before:
+Input:
 
-```ts
-/**
- * Check the credentials with an authenticated `GetDeviceInformation` before resolving, `true` by default. Many
- * devices answer the other connect calls without auth, so without this check a wrong password only shows up on the
- * first real call. Costs one round trip.
- */
-```
+> feat: Implement comprehensive user authentication flow with robust token management and seamless session handling
 
-After:
+- clean: `add user auth flow with token management and session handling`
+- dev: `add user auth with token refresh and sessions`
+- raw: `auth flow + token refresh`
 
-```ts
-/**
- * Test the username and password while connecting. ONVIF has no login step, and the spec lets anyone read the clock
- * and the service list, so without this test a wrong password only shows up on the first call that needs a login.
- * Default `true`.
- *
- * `true`: `connect()` sends one extra request (`GetDeviceInformation`) and throws `AuthError` if the password is
- * wrong.
- *
- * `false`: no extra request. A wrong password is only reported by the first call that needs a login.
- */
-```
+### PR description
 
-The "before" also made a false claim ("many devices answer ... without auth"; really the spec allows those calls without auth). A reword that kept it would still be wrong.
+Input:
 
-### Changelog entry (every fact the writer knew)
+> ## Summary
+>
+> This pull request implements a comprehensive refactoring of the authentication module to enhance security and streamline the token refresh mechanism. The changes ensure that expired tokens are handled seamlessly, providing a robust user experience. Additionally, the error handling has been improved to facilitate better debugging.
+>
+> ## Changes
+>
+> - **Enhanced** the token refresh logic to handle edge cases
+> - **Streamlined** the session management flow
+> - **Improved** error messages for better debugging experience
+> - **Added** comprehensive test coverage for the new functionality
 
-Before:
+clean:
 
-```md
-- Recorded footage. `searchRecordings` lists the segments on a channel, `downloadRecording`
-  pulls a clip to a file (AVI by default or the device's native format, main or sub stream,
-  with progress), and `startPlayback` returns a `PlaybackStream` with the same `frames()`
-  iterator and `recordTo`, plus transport controls (pause, resume, fast-forward, rewind,
-  frame step, normal speed). `RECORD_TYPE`/`RECORD_TYPE_NAME` and `RECORDING_FORMAT` are exported.
-```
+> Refactored the auth module to improve security and fix token refresh. Expired tokens are now handled properly and error handling is clearer.
+>
+> - Fixed token refresh edge cases
+> - Simplified session management
+> - Improved error messages
+> - Added tests
 
-After:
+dev:
 
-```md
-- Recorded footage: `searchRecordings`, `downloadRecording` (AVI or native format, main/sub stream, progress), and `startPlayback` for a `PlaybackStream` with `frames()`, `recordTo`, and transport controls.
-```
+> Refactored auth module. Token refresh was broken for expired sessions, this fixes that plus cleans up error handling.
+>
+> - fix token refresh edge cases
+> - simplify session management
+> - better error messages for debugging
+> - added tests
 
-### Fake work
+raw:
 
-Changing "Mechanics you should know:" to "Things to know:" and "you are" to "you're" across a README is not a deslop. If that's all you can find, the text is either fine (say so) or you didn't look at structure and the reader.
+> auth module refactor, token refresh was busted on expired sessions
+>
+> - fix token refresh edge cases
+> - clean up session mgmt
+> - better error msgs
+> - tests
 
-### Casual isn't better
+### Code comment
 
-A pinned announcement went from "The repository now lives at ... Stepan and I both maintain it from there." to "The repo now lives at ... Same maintainers, Stepan and me." The user posted the original. For public text, keep the plain neutral version.
+Input:
 
-## Final lists
+> // This function is responsible for validating the user's authentication token
+> // by checking its expiration date and ensuring it hasn't been revoked.
+> // It leverages the token store to perform comprehensive validation.
 
-Use these only after the rewrite. Fix a hit by rewriting the sentence, not by swapping in a synonym.
+Every level: delete it. `validateToken` already says this.
 
-Words: utilize, leverage, facilitate, ensure, comprehensive, robust, streamline, enhance, seamless, straightforward, delve, nuanced, holistic, optimal, subsequently, additionally, functionality, methodology, in order to, baked in, lands/landed, surface (verb), verbatim, caveat, untouched, settled, survives, honors, clobber, hand-rolled, stray, spurious, canonical, authoritative, load-bearing, corroborate, guardrail, vestigial, stopgap, masquerading, pare back, wire up, plumb, anchor, the full picture, checks out, footgun, escape hatch, smoking gun. Drop the adverbs silently, deliberately, intentionally, genuinely, cleanly, notably, crucially. Physical metaphors for code changes (lands, ships, leaks, drifts, surfaces, gets wired) become the literal verb. Literal technical senses stay: a real CI gate, a memory leak, config drift, a stale cache, variable shadowing, CLI flags.
+Input that survives, because the why isn't visible in the code:
 
-Structure:
+> // The token store answers 200 with an empty body for revoked tokens, so an
+> // empty response has to count as a revocation rather than a cache miss.
 
-- Opening that restates the question; closing that summarizes what was just said
-- "Let me..." narration; "worth noting/checking/flagging"; "which is exactly what we wanted"
-- Colon or question reveals ("The fix? One line."), "not X, it's Y" when nobody said X, lists of three adjectives
-- Trailing ", ensuring that...", ", which means...", ", allowing you to..." clauses
-- Closing offers ("want me to...", "happy to...", "say the word")
-- Bold on every other phrase, headers over three-line sections, numbered lists for two or three items, emoji markers
-- Any dash other than ASCII `-`. Rewrite em/en dash asides with commas, parens, a colon, or two sentences
+- clean: `// Revoked tokens come back as 200 with an empty body, so empty means revoked, not missing.`
+- dev: `// revoked tokens come back 200 + empty body, so empty means revoked`
+- raw: `// empty 200 from the store means revoked, not missing`
+
+### README opener
+
+Input:
+
+> Welcome to ProjectX! This is a comprehensive, robust solution designed to streamline your development workflow. ProjectX leverages cutting-edge technology to facilitate seamless integration with your existing tools, ensuring an optimal developer experience.
+
+- clean: `ProjectX simplifies your development workflow. It integrates with your existing tools and gets out of your way.`
+- dev: `ProjectX makes your dev workflow simpler. Plugs into your existing tools without a bunch of setup.`
+- raw: `ProjectX. Simpler dev workflow, plugs into your existing tools.`
+
+### Slack message
+
+Input:
+
+> I've completed the implementation of the feature and pushed it to the repository. The changes ensure that the authentication flow handles edge cases properly. I've also added comprehensive test coverage. Please let me know if you have any questions or concerns!
+
+- clean: `Finished the feature and pushed it. Auth flow handles edge cases now, and I added tests. Let me know if you have questions.`
+- dev: `pushed the auth fix, handles the edge cases now. added tests too. lmk if anything looks off`
+- raw: `pushed auth fix + tests, should handle the edge cases now`
+
+## Auto-Clarity
+
+Do NOT deslop:
+
+- Security advisories, CVE descriptions, vulnerability disclosures. Precision matters, casual tone is wrong here.
+- Legal text, license headers, terms of service
+- Formal API documentation intended for external consumers (OpenAPI descriptions, published SDK docs)
+- Compliance text (SOC2, HIPAA, GDPR notices)
+- Direct quotes from other people. Don't rewrite someone else's words.
+- Text the user explicitly says to leave alone
+
+If the input mixes sensitive and regular text (e.g., a PR with a security note), deslop the regular parts and leave the sensitive parts intact. Call out what you skipped and why.
 
 ## Boundaries
 
-- Never change code blocks, inline code, URLs, paths, commands, versions, hashes, error messages, structured data, regexes or env var names.
-- Never add facts, opinions or claims that weren't there. Removing points the reader doesn't need is fine; removing something they do need is not.
-- Don't deslop security advisories, legal or license text, compliance text, or quotes from other people. Say what you skipped.
-- Text in chat: output only the rewrite. Files: edit them and reply with one line on what changed.
+**Never touch:**
+
+- Code blocks (fenced or indented)
+- Inline code (backtick content)
+- URLs, links, file paths
+- Command-line invocations
+- Version numbers, SHAs, hashes
+- Error messages and stack traces (keep exact)
+- Structured data (JSON, YAML, TOML, XML)
+- Regex patterns
+- Environment variable references
+
+**Never invent content.** Output must say the same things as input. Don't add information, opinions, or technical claims that weren't there. Don't remove actual technical content. Only remove stylistic LLM tells.
+
+**Never introduce factual errors.** Casual grammar is fine. Wrong flag names or wrong API calls are not. "config" instead of "configuration" is fine. Changing `--dry-run` to `--dryrun` is not.
+
+**Output the rewritten text only.** Don't explain what you changed. Don't add a "here's what I did" summary. Just output the deslopped text. If the user asks what changed, then explain.
