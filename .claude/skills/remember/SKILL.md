@@ -1,135 +1,47 @@
 ---
 name: remember
-description: Add memory/instruction to CLAUDE.md
+description: Add an instruction to a CLAUDE.md memory file, merging it with what is already there.
 argument-hint: [instruction]
 allowed-tools: Read, Edit, Write, AskUserQuestion
-model: sonnet
 disable-model-invocation: true
 ---
 
-You are helping the user add a memory or instruction to their CLAUDE.md file.
+Instruction to add: $ARGUMENTS
 
-**Memory to add:** $ARGUMENTS
+If no instruction was given, ask for one and stop.
 
-## Step 1: Choose Memory File
+## Pick the file
 
-Use the AskUserQuestion tool to ask which memory file to update:
+If the instruction names a target ("for this repo", "globally"), use it. Otherwise ask with AskUserQuestion:
 
-**Question:** "Which memory file should I update?"
-**Header:** "Memory File"
-**Options:**
-1. **Project (CLAUDE.md)** - "Team-shared memory file, committed to git. Use for project-wide conventions and guidelines."
-2. **Local (CLAUDE.local.md)** - "Personal project memory, auto-gitignored. Use for your own preferences in this project."
-3. **User (~/.claude/CLAUDE.md)** - "Personal memory for all projects. Use for your general preferences across all work."
+- **User** (`~/.claude/CLAUDE.md`): personal rules for every project
+- **Project** (`CLAUDE.md` or `.claude/CLAUDE.md` in the repo root): rules for this repo
+- **Local** (`CLAUDE.local.md` in the repo root): personal rules for this repo only
 
-## Step 2: Read Existing Content
+Offer Project and Local only inside a repo other than the home directory.
 
-Based on the user's choice:
-- If "Project": Read `CLAUDE.md` (or `./CLAUDE.md`)
-- If "Local": Read `CLAUDE.local.md` (or `./CLAUDE.local.md`)
-- If "User": Read `~/.claude/CLAUDE.md`
+## Decide what to do
 
-If the file doesn't exist, that's fine - you'll create it in Step 5.
+Read the whole file. Then pick one:
 
-## Step 3: Intelligent Analysis
+- **Skip**: the rule is already there, in any wording. Say where.
+- **Update**: it contradicts or refines an existing rule. Rewrite that rule in place.
+- **Add**: it is new. Put it under the existing heading it fits. Create a heading only when none fits, and match the
+  file's heading style.
 
-Carefully analyze the existing content (if any) and the new memory. Determine:
+## Write the rule
 
-1. **Is this a duplicate?**
-   - Check for exact matches or very similar content
-   - If duplicate, you'll skip adding it
+- One bullet, imperative, specific and checkable: "Use 2-space indentation", not "Format code well"
+- Match the file's existing bullet style, tone and line length
+- Follow the writing rules in the user's CLAUDE.md: ASCII only, no banned vocabulary
+- Keep the rest of the file as it is
 
-2. **Is this related to existing content?**
-   - Look for similar topics, categories, or themes
-   - Identify which section/heading it belongs under
+If the file does not exist, create it with a `# Claude Instructions` title and one heading for the rule.
 
-3. **What category does this belong to?**
-   Common categories:
-   - Code Style & Formatting
-   - Architecture & Design Patterns
-   - Database & Data Access
-   - Testing & Quality
-   - Error Handling & Logging
-   - API Design
-   - Performance & Optimization
-   - Security
-   - Git & Version Control
-   - Dependencies & Tooling
-   - Documentation
+## Report
 
-4. **Should this replace old guidance?**
-   - If the new memory contradicts or supersedes existing content, update rather than add
+One line naming the action, the heading and the rule, for example:
 
-## Step 4: Determine Action
-
-Based on your analysis, decide:
-
-- **SKIP**: If it's a duplicate of existing content
-- **ADD**: If it's new and unique
-- **MERGE**: If it's related and should be grouped with existing items
-- **UPDATE**: If it replaces or enhances existing guidance
-
-## Step 5: Apply Best Practices
-
-Format the memory following these best practices:
-
-1. **Use bullet points**: Start with `- ` for list items
-2. **Be specific**: "Use 2-space indentation" not "Format code well"
-3. **Be actionable**: Provide clear, concrete guidance
-4. **Use headings**: Group related items under `## Category Name`
-5. **Keep related items together**: Don't scatter similar content
-
-**File Structure Template** (if creating new file):
-```markdown
-# Claude Instructions
-
-## [Category 1]
-
-- Instruction 1
-- Instruction 2
-
-## [Category 2]
-
-- Instruction 3
-```
-
-## Step 6: Update the File
-
-**If file doesn't exist:**
-- Use Write tool to create it with proper structure
-
-**If file exists:**
-- Use Edit tool to update the specific section
-- Add new headings if needed
-- Maintain existing structure and formatting
-
-**Important:**
-- Preserve all existing content unless it's being updated/replaced
-- Keep alphabetical or logical ordering of headings if present
-- Maintain consistent formatting (bullet style, heading levels)
-
-## Step 7: Report Summary
-
-Tell the user what you did in a clear, concise message:
-
-**Examples:**
-
-✓ "Added new memory under **Code Style**: Use 2-space indentation for TypeScript files"
-
-✓ "Merged with existing naming conventions in **Naming Conventions** section"
-
-✓ "Skipped - this is already captured in CLAUDE.md line 23"
-
-✓ "Updated **Testing** section to replace old guidance about test runners"
-
-✓ "Created new CLAUDE.local.md with **Git** section for commit message preferences"
-
-**Format:**
-- Start with the action (Added/Merged/Skipped/Updated/Created)
-- Include the category/section affected
-- Briefly describe what was changed
-- Reference line numbers if updating existing content
-
----
-
-Remember: The goal is to keep CLAUDE.md clean, organized, and free of duplicates while making it easy to scan and understand.
+- Added under **Code Style**: use 2-space indentation for TypeScript
+- Updated the test runner rule under **Testing** to use Vitest
+- Skipped, already covered under **Git & Version Control**
