@@ -5,31 +5,6 @@
     "sessionUrl": false
   },
   "permissions": {
-    "allow": [
-      "Bash(* add)",
-      "Bash(* install)",
-      "Bash(aws cloudwatch *)",
-      "Bash(aws logs *)",
-      "Bash(aws s3 *)",
-      "Bash(aws sts *)",
-      "Bash(docker *)",
-      "Bash(gh *)",
-      "Bash(git *)",
-      "Bash(git commit:*)",
-      "Bash(npm *)",
-      "Bash(npx *)",
-      "Bash(pnpm *)",
-      "Bash(poe *)",
-      "Bash(ruff *)",
-      "Bash(source .venv/bin/activate)",
-      "Bash(tee *)",
-      "Bash(tsx *)",
-      "Bash(ty *)",
-      "Bash(uv *)",
-      "Bash(uvx *)",
-      "WebFetch(domain:github.com)",
-      "WebSearch"
-    ],
     "deny": [
       "Bash(*/python *)",
       "Bash(*/python3 *)",
@@ -44,7 +19,7 @@
       "Bash(python3 *)",
       "Bash(python3)"
     ],
-    "defaultMode": "auto"
+    "defaultMode": "bypassPermissions"
   },
   "hooks": {
     "PreToolUse": [
