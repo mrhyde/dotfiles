@@ -6,7 +6,7 @@ _: {
     settings = {
       gpg.format = "openpgp";
       commit.gpgSign = true;
-      pull.ff = "only";
+      pull.rebase = true;
       rebase.updateRefs = true;
       tag.forceSignAnnotated = false;
       github.user = "mrhyde";
