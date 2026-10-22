@@ -1,8 +1,10 @@
 ---
+name: remember
 description: Add memory/instruction to CLAUDE.md
 argument-hint: [instruction]
 allowed-tools: Read, Edit, Write, AskUserQuestion
 model: sonnet
+disable-model-invocation: true
 ---
 
 You are helping the user add a memory or instruction to their CLAUDE.md file.
