@@ -53,7 +53,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "$HOME/.claude/hooks/python-guard.sh"
+            "command": "$HOME/.claude/hooks/python.sh"
           }
         ]
       }
@@ -64,7 +64,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "jq -r '.tool_input.file_path' | { read -r f; case \"$f\" in *.py) uv run ruff format \"$f\" ;; esac; } 2>/dev/null || true"
+            "command": "$HOME/.claude/hooks/python.sh"
           }
         ]
       }
