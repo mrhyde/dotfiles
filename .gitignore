@@ -107,3 +107,4 @@ Public
 .local/share/uv/
 .claude/plugins/known_marketplaces.json
 .local/share/home-manager/news-read-ids
+.config/systemd/
