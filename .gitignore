@@ -104,3 +104,5 @@ Pictures
 projects
 Public
 .infisical/
+.local/share/uv/
+.claude/plugins/known_marketplaces.json
