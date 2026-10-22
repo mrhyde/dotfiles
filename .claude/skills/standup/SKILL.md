@@ -19,5 +19,5 @@ hashes, counts and bug details.
 - Too detailed: "Removed four redundant allow rules from settings.json and set defaultMode to bypassPermissions"
 - Right: "Cleaned up my Claude Code permissions"
 
-First person, one line per item, at most three items per section, ASCII only. If an item needs a comma to finish, it
-is too detailed.
+First person, one line per item, at most three items per section. If an item needs a comma to finish, it is too
+detailed.

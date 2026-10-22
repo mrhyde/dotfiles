@@ -33,7 +33,6 @@ Read the whole file. Then pick one:
 
 - One bullet, imperative, specific and checkable: "Use 2-space indentation", not "Format code well"
 - Match the file's existing bullet style, tone and line length
-- Follow the writing rules in the user's CLAUDE.md: ASCII only, no banned vocabulary
 - Keep the rest of the file as it is
 
 If the file does not exist, create it with a `# Claude Instructions` title and one heading for the rule.

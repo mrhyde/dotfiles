@@ -62,7 +62,6 @@ one or two plain sentences.` Create a group when it is missing.
 - No trailing period on a one-sentence entry. A second sentence is only for a migration or
   breaking-change note, and then the entry ends with a period.
 - Link the issue at the end in the file's existing style, usually `([#NN](url))`.
-- ASCII only. No em dashes, curly quotes or bullet characters.
 
 ## Checking
 
