@@ -49,6 +49,7 @@
       # programming languages
       volta
       uv
+      rustup
 
       # misc
       asciinema
