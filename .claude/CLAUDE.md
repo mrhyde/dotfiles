@@ -96,6 +96,7 @@ NEVER include:
 
 - Do not use dashes, long dashes, or em dashes in written output unless absolutely necessary
 - Never use fancy unicode symbols (box-drawing, em/en dashes, curly quotes, arrows, bullets like `•`) anywhere — code, comments, prose, commits, docs. Stick to ASCII
+- When you get something wrong, say so plainly: no softening, no excuses, no justifying, and no arguing with the criticism
 
 ### Banned AI vocabulary
 
